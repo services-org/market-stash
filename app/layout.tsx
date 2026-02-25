@@ -6,6 +6,7 @@ import "@/public/css/globals.css";
 export const metadata = {
     title: "أبو رقية",
     description: "إدارة متجر أبو رقية",
+    manifest: "/manifest.json",
     appleWebApp: {
         capable: true,
         statusBarStyle: "black-translucent",
