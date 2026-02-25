@@ -35,7 +35,7 @@ export async function getCompanies() {
             $group: {
                 _id: "$company",
                 productCount: { $sum: 1 },
-                totalValue: { $sum: { $multiply: ["$sellPrice", "$count"] } },
+                totalValue: { $sum: { $multiply: ["$buyPrice", "$count"] } },
             },
         },
         { $sort: { _id: 1 } },
