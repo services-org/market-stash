@@ -2,7 +2,7 @@
     "name": "أبو رقية",
     "short_name": "أبو رقية",
     "description": "إدارة متجر أبو رقية",
-    "start_url": "/products",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#09090b",
     "theme_color": "#09090b",
