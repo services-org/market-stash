@@ -1,8 +1,7 @@
 "use client";
-import { ArrowRight } from "lucide-react";
 import { use, useMemo } from "react";
-import Link from "next/link";
 
+import { PageHeader, EmptyState } from "@/components/common";
 import { CompanyProductCard } from "./_components";
 import { Skeleton } from "@/components/ui/skeleton";
 import { TProduct } from "@/server/models/product";
@@ -28,17 +27,7 @@ export default function CompanyDetailPage({ params }: Readonly<Params>) {
 
     return (
         <>
-            <div className="sticky top-0 z-10 border-b border-border/60 bg-background/95 backdrop-blur-sm">
-                <div className="flex items-center gap-3 px-4 pt-4 pb-3">
-                    <Link href="/companies" className="flex size-8 items-center justify-center rounded-full hover:bg-accent">
-                        <ArrowRight className="size-4" />
-                    </Link>
-                    <div>
-                        <h1 className="text-lg font-bold">{decodedCompany}</h1>
-                        <p className="text-xs text-muted-foreground">{products.length} منتج</p>
-                    </div>
-                </div>
-            </div>
+            <PageHeader title={decodedCompany} subtitle={`${products.length} منتج`} backHref="/companies" />
 
             <div className="p-4">
                 {isPending ? (
@@ -48,7 +37,7 @@ export default function CompanyDetailPage({ params }: Readonly<Params>) {
                         ))}
                     </div>
                 ) : products.length === 0 ? (
-                    <div className="py-16 text-center text-sm text-muted-foreground">لا توجد منتجات لهذه الشركة.</div>
+                    <EmptyState message="لا توجد منتجات لهذه الشركة." />
                 ) : (
                     <div className="space-y-5">
                         {grouped.map(([location, items]) => (

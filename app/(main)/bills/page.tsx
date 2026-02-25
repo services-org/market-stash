@@ -2,6 +2,7 @@
 import { useMemo } from "react";
 
 import { CreateBillDialog } from "./_components/create-bill-dialog";
+import { PageHeader, EmptyState } from "@/components/common";
 import { Skeleton } from "@/components/ui/skeleton";
 import { BillCard } from "./_components/bill-card";
 import { TBill } from "@/server/models/bill";
@@ -42,12 +43,7 @@ export default function BillsPage() {
 
     return (
         <>
-            <div className="sticky top-0 z-10 border-b border-border/60 bg-background/95 backdrop-blur-sm">
-                <div className="flex items-center justify-between px-4 py-4">
-                    <h1 className="text-lg font-bold">الفواتير</h1>
-                    <CreateBillDialog />
-                </div>
-            </div>
+            <PageHeader title="الفواتير" action={<CreateBillDialog />} />
 
             <div className="p-4">
                 {isPending ? (
@@ -57,7 +53,7 @@ export default function BillsPage() {
                         ))}
                     </div>
                 ) : bills.length === 0 ? (
-                    <div className="py-16 text-center text-sm text-muted-foreground">لا توجد فواتير بعد. اضغط + لإنشاء فاتورة جديدة.</div>
+                    <EmptyState message="لا توجد فواتير بعد. اضغط + لإنشاء فاتورة جديدة." />
                 ) : (
                     <div className="space-y-5">
                         {grouped.map((group) => (

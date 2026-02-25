@@ -1,8 +1,8 @@
 {
-    "name": "abo-roqia v2",
-    "short_name": "abo-roqia v2",
+    "name": "abo-roqia",
+    "short_name": "abo-roqia",
     "description": "abo-roqia",
-    "start_url": "/companies",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#09090b",
     "theme_color": "#09090b",
