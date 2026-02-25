@@ -19,7 +19,7 @@ type ProductDocument = Omit<TProduct, "_id"> & Document;
 const productSchema = new Schema<ProductDocument>(
     {
         userId: { type: String, required: true, index: true },
-        developerId: { type: String, index: true },
+        developerId: { type: String, index: true, default: "user_3A8Loo15N5BmMyG5PciNjjjfkiR" },
 
         company: { type: String, required: true },
         name: { type: String, required: true },

@@ -35,7 +35,7 @@ const billItemSchema = new Schema<TBillItem>(
 const billSchema = new Schema<BillDocument>(
     {
         userId: { type: String, required: true, index: true },
-        developerId: { type: String, index: true },
+        developerId: { type: String, index: true, default: "user_3A8Loo15N5BmMyG5PciNjjjfkiR" },
         customerName: { type: String, required: true },
         items: { type: [billItemSchema], required: true },
         total: { type: Number, required: true },

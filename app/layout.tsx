@@ -6,6 +6,14 @@ import "@/public/css/globals.css";
 export const metadata = {
     title: "أبو رقية",
     description: "إدارة متجر أبو رقية",
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: "black-translucent",
+        title: "أبو رقية",
+    },
+    icons: {
+        apple: "/images/logo.png",
+    },
 };
 
 export default function RootLayout({
