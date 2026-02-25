@@ -1,6 +1,7 @@
 "use client";
 
 import { useMutation, useQueryClient, type UseMutationOptions } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 type UseDeleteOptions<TData> = Omit<UseMutationOptions<TData, Error, void>, "mutationFn"> & {
     invalidateKeys?: string[];
@@ -20,6 +21,14 @@ export function useDelete<TData = unknown>(url: string, options?: UseDeleteOptio
         onSuccess: (...args) => {
             invalidateKeys?.forEach((key) => queryClient.invalidateQueries({ queryKey: [key] }));
             onSuccess?.(...args);
+        },
+        onError: (error) => {
+            try {
+                const parsed = JSON.parse(error.message);
+                toast.error(parsed.error || "حدث خطأ");
+            } catch {
+                toast.error(error.message || "حدث خطأ");
+            }
         },
     });
 }

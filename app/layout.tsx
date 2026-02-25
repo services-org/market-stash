@@ -1,5 +1,6 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import { QueryProvider } from "@/components/providers";
+import { Toaster } from "@/components/ui/sonner";
 import "@/public/css/globals.css";
 
 export const metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({
             <html lang="ar" dir="rtl" className="dark" suppressHydrationWarning>
                 <body className="antialiased" suppressHydrationWarning>
                     <QueryProvider>{children}</QueryProvider>
+                    <Toaster position="top-center" richColors dir="rtl" />
                 </body>
             </html>
         </ClerkProvider>

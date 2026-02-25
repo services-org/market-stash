@@ -24,7 +24,10 @@ export function ProductCard({ product }: ProductCardProps) {
                     </div>
                     <div className="flex flex-col items-end gap-1.5">
                         <Badge variant="secondary" className="font-mono text-xs font-semibold">
-                            {formatNumber(product.price)} ج.م
+                            بيع: {formatNumber(product.sellPrice)} ج.م
+                        </Badge>
+                        <Badge variant="outline" className="font-mono text-xs">
+                            شراء: {formatNumber(product.buyPrice)} ج.م
                         </Badge>
                         <span className="text-xs text-muted-foreground">
                             الكمية: <span className="font-semibold text-foreground">{product.count}</span>

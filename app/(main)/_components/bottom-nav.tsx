@@ -2,20 +2,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Package, Building2 } from "lucide-react";
+import { Package, Building2, Receipt } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
     { href: "/products", label: "المنتجات", icon: Package },
     { href: "/companies", label: "الشركات", icon: Building2 },
+    { href: "/bills", label: "الفواتير", icon: Receipt },
 ];
 
 export function BottomNav() {
     const pathname = usePathname();
 
     return (
-        <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-border/60 bg-background/95 backdrop-blur-sm">
+        <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-border/60 bg-background/95 backdrop-blur-sm print:hidden">
             <div className="mx-auto flex max-w-md items-center justify-around py-2">
                 {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
                     const isActive = pathname.startsWith(href);
@@ -34,7 +35,7 @@ export function BottomNav() {
                     );
                 })}
                 <div className="flex flex-col items-center gap-0.5 px-3 py-1 text-xs text-muted-foreground">
-                    <UserButton afterSignOutUrl="/sign-in" />
+                    <UserButton fallback="/sign-in" />
                     <span>الحساب</span>
                 </div>
             </div>

@@ -14,11 +14,11 @@ export function LocationTabs({ locations, active, onSelect }: LocationTabsProps)
         <div className="no-scrollbar flex gap-2 overflow-x-auto px-4 pb-3">
             <Badge
                 variant={active === null ? "default" : "outline"}
+                onClick={() => onSelect(null)}
                 className={cn(
                     "cursor-pointer whitespace-nowrap px-3 py-1.5 text-xs transition-all",
                     active === null ? "shadow-sm" : "hover:bg-accent",
                 )}
-                onClick={() => onSelect(null)}
             >
                 الكل
             </Badge>

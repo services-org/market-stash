@@ -1,812 +1,3018 @@
 [
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مولفكس بانتس",
-        "name": "م٣",
-        "count": 1,
-        "price": 900,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مولفكس بانتس",
-        "name": "م٤",
-        "count": 2,
-        "price": 900,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مولفكس بانتس",
-        "name": "م٥",
-        "count": 2,
-        "price": 1040,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مولفكس بانتس",
-        "name": "م٦",
-        "count": 0,
-        "price": 915,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مولبد",
-        "name": "دبل طويل جدا",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي جوي بانتس",
-        "name": "م٣",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي جوي بانتس",
-        "name": "م٤",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي جوي بانتس",
-        "name": "م٥",
-        "count": 0,
-        "price": 870,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي جوي بانتس",
-        "name": "م٦",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "حفاضات كبار سن",
-        "name": "جيرمني ١٨ ح",
-        "count": 0,
-        "price": 380,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "حفاضات كبار سن",
-        "name": "جيرمني ٣٦ ح",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "حفاضات كبار سن",
-        "name": "فاين بيزك ٣٦ ح",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "سوفي",
-        "name": "طويل",
-        "count": 0,
-        "price": 610,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "سوفي",
-        "name": "طويل جداً",
-        "count": 0,
-        "price": 390,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "اولويز",
-        "name": "تريو",
-        "count": 0,
-        "price": 570,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "اولويز",
-        "name": "تريو حساس",
-        "count": 0,
-        "price": 350,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "اولويز",
-        "name": "دبل",
-        "count": 0,
-        "price": 500,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي جوي بانتس",
-        "name": "جوي م٥ بانتس",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مناديل مبللة",
-        "name": "مبلل مور ٧٢ م",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مناديل مبللة",
-        "name": "مبلل مور ١٢٠ م",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بكر تواليت",
-        "name": "فامليا بكر",
-        "count": 0,
-        "price": 120,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بكر تواليت",
-        "name": "جود كير بكر",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بكر تواليت",
-        "name": "فاين دويتو 6*6",
-        "count": 30,
-        "price": 290,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بامبرز بانتس",
-        "name": "م٣",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بامبرز بانتس",
-        "name": "م٤",
-        "count": 6,
-        "price": 940,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بامبرز بانتس",
-        "name": "م٥",
-        "count": 8,
-        "price": 1000,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بامبرز بانتس",
-        "name": "م٦",
-        "count": 4,
-        "price": 940,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بامبرز عادي",
-        "name": "م 1",
-        "count": 0,
-        "price": 222,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بامبرز عادي",
-        "name": "م 2",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بامبرز عادي",
-        "name": "م 3",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بامبرز عادي",
-        "name": "م 4",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بامبرز عادي",
-        "name": "م 5",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بوني عادي",
-        "name": "م١",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بوني عادي",
-        "name": "م٢",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بوني عادي",
-        "name": "م٣",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بوني عادي",
-        "name": "م٤",
-        "count": 3,
-        "price": 730,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بوني عادي",
-        "name": "م٥",
-        "count": 10,
-        "price": 860,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "دامبلز",
-        "name": "م١",
-        "count": 0,
-        "price": 513,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "دامبلز",
-        "name": "م٢",
-        "count": 0,
-        "price": 550,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "دامبلز",
-        "name": "م٣",
-        "count": 0,
-        "price": 585,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "دامبلز",
-        "name": "م٤",
-        "count": 0,
-        "price": 700,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "دامبلز",
-        "name": "م٥",
-        "count": 0,
-        "price": 780,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مولفكس عادي",
-        "name": "م١",
-        "count": 0,
-        "price": 730,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مولفكس عادي",
-        "name": "م٢",
-        "count": 0,
-        "price": 750,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مولفكس عادي",
-        "name": "م٣",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مولفكس عادي",
-        "name": "م٤",
-        "count": 0,
-        "price": 880,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مولفكس عادي",
-        "name": "م٥",
-        "count": 2,
-        "price": 1040,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مولفكس عادي",
-        "name": "م٦",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "جود كير",
-        "name": "م٢",
-        "count": 0,
-        "price": 550,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "جود كير",
-        "name": "م٣",
-        "count": 0,
-        "price": 610,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "جود كير",
-        "name": "م٤",
-        "count": 0,
-        "price": 800,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "جود كير",
-        "name": "م٥",
-        "count": 0,
-        "price": 676,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "جود كير",
-        "name": "م٦",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مناديل جيب",
-        "name": "فامليا جيب",
-        "count": 0,
-        "price": 170,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مناديل جيب",
-        "name": "هاندي جيب",
-        "count": 0,
-        "price": 125,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مناديل جيب",
-        "name": "جود كير جيب",
-        "count": 0,
-        "price": 135,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مناديل ايزي باج",
-        "name": "هاندي",
-        "count": 0,
-        "price": 275,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بي بم بانتس",
-        "name": "م٣",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بي بم بانتس",
-        "name": "م٤",
-        "count": 0,
-        "price": 625,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بي بم بانتس",
-        "name": "م٥",
-        "count": 0,
-        "price": 715,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بي بم بانتس",
-        "name": "م٦",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مناديل سحب",
-        "name": "زينه ٥٥٠ م",
-        "count": 0,
-        "price": 315,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مناديل سحب",
-        "name": "فامليا ٥٠٠ م",
-        "count": 0,
-        "price": 345,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مناديل سحب",
-        "name": "بابيا ٥٠٠ م",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "مناديل سحب",
-        "name": "لانا عشره عمر",
-        "count": 0,
-        "price": 205,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بكر مطبخ",
-        "name": "زينه ٢ رول",
-        "count": 0,
-        "price": 125,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي جوي",
-        "name": "م١",
-        "count": 0,
-        "price": 715,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي جوي",
-        "name": "م٢",
-        "count": 1,
-        "price": 730,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي جوي",
-        "name": "م٣",
-        "count": 0,
-        "price": 845,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي جوي",
-        "name": "م٤",
-        "count": 20,
-        "price": 845,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي جوي",
-        "name": "م٥",
-        "count": 13,
-        "price": 980,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي جوي",
-        "name": "كراتين م٥",
-        "count": 0,
-        "price": 350,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "برايفت",
-        "name": "تريو 30 * 6",
-        "count": 0,
-        "price": 250,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي فاين",
-        "name": "فاين م١",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي فاين",
-        "name": "فاين م٢",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي فاين",
-        "name": "فاين م٣",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي فاين",
-        "name": "فاين م٤",
-        "count": 0,
-        "price": 615,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي فاين",
-        "name": "فاين م٥",
-        "count": 0,
-        "price": 905,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي فاين",
-        "name": "ميجا م٣",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي فاين",
-        "name": "ميجا م٤",
-        "count": 0,
-        "price": 545,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "بيبي فاين",
-        "name": "ميجا م٥",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "موني",
-        "name": "م١",
-        "count": 0,
-        "price": 0,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "موني",
-        "name": "م٢",
-        "count": 0,
-        "price": 680,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "موني",
-        "name": "م٣",
-        "count": 0,
-        "price": 725,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "موني",
-        "name": "م٤",
-        "count": 8,
-        "price": 700,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "موني",
-        "name": "م٥",
-        "count": 10,
-        "price": 790,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "لافلي",
-        "name": "م ٢",
-        "count": 0,
-        "price": 590,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "لافلي",
-        "name": "م٣",
-        "count": 2,
-        "price": 655,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "لافلي",
-        "name": "م٤",
-        "count": 30,
-        "price": 660,
-        "location": "مخزن 1"
-    },
-    {
-        "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
-        "company": "لافلي",
-        "name": "م٥",
-        "count": 35,
-        "price": 720,
-        "location": "مخزن 1"
-    }
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731cb"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس بانتس",
+    "name": "م٣",
+    "count": 1,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731cc"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس بانتس",
+    "name": "م٤",
+    "count": 2,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731cd"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس بانتس",
+    "name": "م٥",
+    "count": 2,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731ce"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس بانتس",
+    "name": "م٦",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731cf"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولبد",
+    "name": "دبل طويل جدا",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731d0"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي بانتس",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731d1"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي بانتس",
+    "name": "م٤",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731d2"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي بانتس",
+    "name": "م٥",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731d3"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي بانتس",
+    "name": "م٦",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731d4"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "حفاضات كبار سن",
+    "name": "جيرمني ١٨ ح",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731d5"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "حفاضات كبار سن",
+    "name": "جيرمني ٣٦ ح",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731d6"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "حفاضات كبار سن",
+    "name": "فاين بيزك ٣٦ ح",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731d7"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "سوفي",
+    "name": "طويل",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731d8"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "سوفي",
+    "name": "طويل جداً",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731d9"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "اولويز",
+    "name": "تريو",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731da"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "اولويز",
+    "name": "تريو حساس",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731db"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "اولويز",
+    "name": "دبل",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731dc"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي بانتس",
+    "name": "جوي م٥ بانتس",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731dd"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل مبللة",
+    "name": "مبلل مور ٧٢ م",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731de"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل مبللة",
+    "name": "مبلل مور ١٢٠ م",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731df"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر تواليت",
+    "name": "فامليا بكر",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731e0"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر تواليت",
+    "name": "جود كير بكر",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731e1"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر تواليت",
+    "name": "فاين دويتو 6*6",
+    "count": 30,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731e2"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز بانتس",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731e3"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز بانتس",
+    "name": "م٤",
+    "count": 6,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731e4"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز بانتس",
+    "name": "م٥",
+    "count": 8,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731e5"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز بانتس",
+    "name": "م٦",
+    "count": 4,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731e6"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز عادي",
+    "name": "م 1",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731e7"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز عادي",
+    "name": "م 2",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731e8"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز عادي",
+    "name": "م 3",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731e9"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز عادي",
+    "name": "م 4",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731ea"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز عادي",
+    "name": "م 5",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731eb"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بوني عادي",
+    "name": "م١",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731ec"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بوني عادي",
+    "name": "م٢",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731ed"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بوني عادي",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731ee"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بوني عادي",
+    "name": "م٤",
+    "count": 3,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731ef"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بوني عادي",
+    "name": "م٥",
+    "count": 10,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731f0"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "دامبلز",
+    "name": "م١",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731f1"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "دامبلز",
+    "name": "م٢",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731f2"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "دامبلز",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731f3"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "دامبلز",
+    "name": "م٤",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731f4"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "دامبلز",
+    "name": "م٥",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731f5"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس عادي",
+    "name": "م١",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731f6"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس عادي",
+    "name": "م٢",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731f7"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس عادي",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731f8"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس عادي",
+    "name": "م٤",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731f9"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس عادي",
+    "name": "م٥",
+    "count": 2,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731fa"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس عادي",
+    "name": "م٦",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731fb"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير",
+    "name": "م٢",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731fc"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731fd"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير",
+    "name": "م٤",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731fe"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير",
+    "name": "م٥",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa731ff"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير",
+    "name": "م٦",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73200"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل جيب",
+    "name": "فامليا جيب",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73201"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل جيب",
+    "name": "هاندي جيب",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73202"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل جيب",
+    "name": "جود كير جيب",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73203"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل ايزي باج",
+    "name": "هاندي",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73204"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بي بم بانتس",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73205"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بي بم بانتس",
+    "name": "م٤",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73206"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بي بم بانتس",
+    "name": "م٥",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73207"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بي بم بانتس",
+    "name": "م٦",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73208"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "زينه ٥٥٠ م",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73209"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "فامليا ٥٠٠ م",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa7320a"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "بابيا ٥٠٠ م",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa7320b"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "لانا عشره عمر",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa7320c"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر مطبخ",
+    "name": "زينه ٢ رول",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa7320d"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "م١",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa7320e"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "م٢",
+    "count": 1,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa7320f"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73210"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "م٤",
+    "count": 20,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73211"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "م٥",
+    "count": 13,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73212"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "كراتين م٥",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73213"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "برايفت",
+    "name": "تريو 30 * 6",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73214"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "فاين م١",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73215"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "فاين م٢",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73216"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "فاين م٣",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73217"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "فاين م٤",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73218"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "فاين م٥",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73219"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "ميجا م٣",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa7321a"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "ميجا م٤",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa7321b"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "ميجا م٥",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa7321c"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "موني",
+    "name": "م١",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa7321d"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "موني",
+    "name": "م٢",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa7321e"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "موني",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa7321f"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "موني",
+    "name": "م٤",
+    "count": 8,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73220"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "موني",
+    "name": "م٥",
+    "count": 10,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73221"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "لافلي",
+    "name": "م ٢",
+    "count": 0,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73222"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "لافلي",
+    "name": "م٣",
+    "count": 2,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73223"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "لافلي",
+    "name": "م٤",
+    "count": 30,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e256d4826cda93fa73224"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "لافلي",
+    "name": "م٥",
+    "count": 35,
+    "location": "مخزن 1",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7322e"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "م١",
+    "count": 1,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7322f"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "م٢",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73230"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73231"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "م٤",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73232"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "م٥",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73233"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "جوي بانتس م٣",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73234"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "جوي بانتس م٤",
+    "count": 5,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73235"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "جوي بانتس م٥",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73236"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي جوي",
+    "name": "جوي بانتس م٦",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73237"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل ايزي باج",
+    "name": "هاندي",
+    "count": 1,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73238"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير",
+    "name": "م٢",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73239"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7323a"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير",
+    "name": "م٤",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7323b"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير",
+    "name": "م٥",
+    "count": 9,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7323c"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير",
+    "name": "م٦",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7323d"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "فاين م١",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7323e"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "فاين م٢",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7323f"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "فاين م٣",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73240"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "فاين م٤",
+    "count": 4,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73241"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "فاين م٥",
+    "count": 5,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73242"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "ميجا م٣",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73243"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "ميجا م٤",
+    "count": 1,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73244"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بيبي فاين",
+    "name": "ميجا م٥",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73245"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "سوفي",
+    "name": "طويل",
+    "count": 11,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73246"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "سوفي",
+    "name": "طويل جداً",
+    "count": 26,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73247"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "سوفي",
+    "name": "سوفي طويل ١٥ ق",
+    "count": 29,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73248"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "سوفي",
+    "name": "سوفي طويل جدا ١٥ ق",
+    "count": 1,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73249"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بوني عادي",
+    "name": "م١",
+    "count": 4,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7324a"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بوني عادي",
+    "name": "م٢",
+    "count": 12,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7324b"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بوني عادي",
+    "name": "م٣",
+    "count": 4,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7324c"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بوني عادي",
+    "name": "م٤",
+    "count": 40,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7324d"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بوني عادي",
+    "name": "م٥",
+    "count": 3,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7324e"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز عادي",
+    "name": "م 1",
+    "count": 11,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7324f"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز عادي",
+    "name": "م 2",
+    "count": 8,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73250"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز عادي",
+    "name": "م 3",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73251"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز عادي",
+    "name": "م 4",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73252"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز عادي",
+    "name": "م 5",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73253"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس بانتس",
+    "name": "م٣",
+    "count": 4,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73254"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس بانتس",
+    "name": "م٤",
+    "count": 4,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73255"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس بانتس",
+    "name": "م٥",
+    "count": 3,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73256"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس بانتس",
+    "name": "م٦",
+    "count": 11,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73257"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "زينه ٥٥٠ م",
+    "count": 29,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73258"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "فامليا ٥٠٠ م",
+    "count": 4,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73259"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "بابيا ٥٠٠ م",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7325a"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "لانا عشره عمر",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7325b"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "فامليا ٦٥٠ م",
+    "count": 20,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7325c"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "وايت ٥٠٠ م",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7325d"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "ايجل ٥٠٠",
+    "count": 29,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7325e"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "لارا ٤٠٠ م",
+    "count": 26,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7325f"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "اوندا شعبي",
+    "count": 13,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73260"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "هاتدي ٥٥٠ م",
+    "count": 65,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73261"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "سوافي ٥٠٠ م",
+    "count": 42,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73262"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل سحب",
+    "name": "سوفت برو ٥٠٠ م",
+    "count": 50,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73263"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل مبللة",
+    "name": "مبلل مور ٧٢ م",
+    "count": 11,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73264"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل مبللة",
+    "name": "مبلل مور ١٢٠ م",
+    "count": 10,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73265"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل مبللة",
+    "name": "مبلل عرض مدارس",
+    "count": 3,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73266"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "اولويز",
+    "name": "تريو",
+    "count": 17,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73267"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "اولويز",
+    "name": "تريو حساس",
+    "count": 10,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73268"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "اولويز",
+    "name": "دبل ليلي",
+    "count": 3,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73269"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "اولويز",
+    "name": "اولويز مفرد ليلى",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7326a"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "اولويز",
+    "name": "اولويز مفرد حساس",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7326b"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "اولويز",
+    "name": "دبل سوبر",
+    "count": 7,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7326c"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "اولويز",
+    "name": "اولويز دبل حساس",
+    "count": 1,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7326d"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر تواليت",
+    "name": "فامليا بكر",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7326e"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر تواليت",
+    "name": "جود كير بكر",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7326f"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر تواليت",
+    "name": "زينه ٦ رول",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73270"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر تواليت",
+    "name": "فامليا ٦ رول",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73271"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر تواليت",
+    "name": "فاين دويتو",
+    "count": 11,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73272"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر تواليت",
+    "name": "بكر سانيتا خفيف",
+    "count": 7,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73273"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر تواليت",
+    "name": "زينه ٢ رول مضغوط",
+    "count": 5,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73274"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "حفاضات كبار سن",
+    "name": "جيرمني ١٨ ح",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73275"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "حفاضات كبار سن",
+    "name": "جيرمني ٣٦ ح",
+    "count": 18,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73276"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "حفاضات كبار سن",
+    "name": "فاين بيزك ٣٦ ح",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73277"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "حفاضات كبار سن",
+    "name": "كازينو",
+    "count": 1,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73278"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "حفاضات كبار سن",
+    "name": "ليدي جيرمني ٢٠ فوطه",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73279"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "حفاضات كبار سن",
+    "name": "ميجا لارج ٣٦ حفاضه",
+    "count": 3,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7327a"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "موني",
+    "name": "م١",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7327b"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "موني",
+    "name": "م٢",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7327c"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "موني",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7327d"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "موني",
+    "name": "م٤",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7327e"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "موني",
+    "name": "م٥",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7327f"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس عادي",
+    "name": "م١",
+    "count": 1,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73280"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس عادي",
+    "name": "م٢",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73281"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس عادي",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73282"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس عادي",
+    "name": "م٤",
+    "count": 1,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73283"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس عادي",
+    "name": "م٥",
+    "count": 7,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73284"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولفكس عادي",
+    "name": "م٦",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73285"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولبد",
+    "name": "دبل طويل جدا",
+    "count": 10,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73286"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولبد",
+    "name": "مولبد طويل شكل جديد",
+    "count": 11,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73287"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مولبد",
+    "name": "مولبد طويل جدا شكل جديد",
+    "count": 4,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73288"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز بانتس",
+    "name": "م٣",
+    "count": 4,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73289"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز بانتس",
+    "name": "م٤",
+    "count": 14,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7328a"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز بانتس",
+    "name": "م٥",
+    "count": 10,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7328b"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بامبرز بانتس",
+    "name": "م٦",
+    "count": 1,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7328c"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "دامبلز",
+    "name": "م١",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7328d"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "دامبلز",
+    "name": "م٢",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7328e"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "دامبلز",
+    "name": "م٣",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7328f"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "دامبلز",
+    "name": "م٤",
+    "count": 6,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73290"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "دامبلز",
+    "name": "م٥",
+    "count": 17,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73291"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "برايفت",
+    "name": "تريو 30 * 6",
+    "count": 3,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73292"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل جيب",
+    "name": "فامليا جيب",
+    "count": 3,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73293"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل جيب",
+    "name": "جود كير جيب",
+    "count": 69,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73294"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مناديل جيب",
+    "name": "كارمن جيب",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73295"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر مطبخ",
+    "name": "زينه ٢ رول",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73296"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بكر مطبخ",
+    "name": "زينه x l",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73297"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بي بم بانتس",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73298"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بي بم بانتس",
+    "name": "م٤",
+    "count": 9,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa73299"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بي بم بانتس",
+    "name": "م٥",
+    "count": 9,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7329a"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "بي بم بانتس",
+    "name": "م٦",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7329b"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "هابي داي",
+    "name": "م٤",
+    "count": 13,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7329c"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "هابي داي",
+    "name": "م٥",
+    "count": 14,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7329d"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "هابي داي",
+    "name": "م١",
+    "count": 12,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7329e"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "هابي داي",
+    "name": "م٢",
+    "count": 4,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa7329f"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "هابي داي",
+    "name": "م٣",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732a0"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "سندريلا",
+    "name": "موووف",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732a1"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير ٨٥ حفاضه",
+    "name": "م٢",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732a2"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير ٨٥ حفاضه",
+    "name": "م٣",
+    "count": 4,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732a3"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير ٨٥ حفاضه",
+    "name": "م٤",
+    "count": 6,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732a4"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جود كير ٨٥ حفاضه",
+    "name": "م٥",
+    "count": 3,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732a5"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "لافلي ٤٠ ح",
+    "name": "م٢",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732a6"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "لافلي ٤٠ ح",
+    "name": "م٣",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732a7"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "لافلي ٤٠ ح",
+    "name": "م٤",
+    "count": 25,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732a8"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "لافلي ٤٠ ح",
+    "name": "م٥",
+    "count": 22,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732a9"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جينيس",
+    "name": "دبل",
+    "count": 45,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732aa"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جينيس",
+    "name": "لبن",
+    "count": 5,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732ab"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "جينيس",
+    "name": "زيرو",
+    "count": 1,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732ac"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مواد تعبئة وتغليف",
+    "name": "٧ اونز",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732ad"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مواد تعبئة وتغليف",
+    "name": "ربل مايه",
+    "count": 11,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732ae"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مواد تعبئة وتغليف",
+    "name": "فويل ٥ م شعبي",
+    "count": 9,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732af"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مواد تعبئة وتغليف",
+    "name": "فويل ١٠ م شعبي",
+    "count": 19,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732b0"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مواد تعبئة وتغليف",
+    "name": "فويل سانيتا ١٠ م استندر",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732b1"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مواد تعبئة وتغليف",
+    "name": "تراي باك ٧ اونز",
+    "count": 20,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732b2"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مواد تعبئة وتغليف",
+    "name": "علب وجبات ٣ عين",
+    "count": 2,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732b3"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مستحضرات تجميل",
+    "name": "شامبو لوزان لتر",
+    "count": 3,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732b4"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مستحضرات تجميل",
+    "name": "شاور لوزان ٢.٢٥ لتر",
+    "count": 7,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732b5"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مستحضرات تجميل",
+    "name": "شامبو هيردو ٨٠٠ م",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732b6"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مستحضرات تجميل",
+    "name": "شامبو دويتو شرايط",
+    "count": 0,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732b7"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "مستحضرات تجميل",
+    "name": "شاور منك لتر ونص",
+    "count": 1,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732b8"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "ماي واي",
+    "name": "باور ماي واي",
+    "count": 6,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732b9"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "ماي واي",
+    "name": "شاور ماي واي ٢ لتر",
+    "count": 13,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732ba"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "ماي واي",
+    "name": "صن سويت",
+    "count": 13,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  },
+  {
+    "_id": {
+      "$oid": "699e297f4826cda93fa732bb"
+    },
+    "userId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "developerId": "user_3A8Loo15N5BmMyG5PciNjjjfkiR",
+    "company": "ماي واي",
+    "name": "زبادي",
+    "count": 1,
+    "location": "مخزن 2",
+    "buyPrice": 0,
+    "sellPrice": 0
+  }
 ]

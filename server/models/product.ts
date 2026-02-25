@@ -4,7 +4,8 @@ export type TProduct = {
     _id: string;
     name: string;
     company: string;
-    price: number;
+    buyPrice: number;
+    sellPrice: number;
     count: number;
     location: string;
     userId: string;
@@ -24,7 +25,8 @@ const productSchema = new Schema<ProductDocument>(
         name: { type: String, required: true },
 
         count: { type: Number, required: true, default: 0 },
-        price: { type: Number, required: true, default: 0 },
+        buyPrice: { type: Number, required: true, default: 0 },
+        sellPrice: { type: Number, required: true, default: 0 },
 
         location: { type: String, required: true },
     },

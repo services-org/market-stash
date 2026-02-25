@@ -9,6 +9,7 @@ type UseGetOptions<T> = Omit<UseQueryOptions<T>, "queryKey" | "queryFn"> & {
 
 export function useGet<T = unknown>(url: string, options: UseGetOptions<T>) {
     return useQuery<T>({
+        staleTime: 30_000,
         ...options,
         queryFn: async () => {
             const res = await fetch(url);

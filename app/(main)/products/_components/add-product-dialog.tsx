@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { Plus, PenLine, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -12,14 +14,16 @@ import { useCreate, useGet } from "@/hooks/api";
 
 const LOCATIONS = ["المحل", "مخزن 1", "مخزن 2"];
 
-type TAddProductForm = {
-    name: string;
-    company: string;
-    price: number;
-    count: number;
-    location: string;
-};
+const addProductSchema = z.object({
+    name: z.string().min(1, "اسم المنتج مطلوب"),
+    company: z.string().min(1, "الشركة مطلوبة"),
+    buyPrice: z.number().min(0, "سعر الشراء يجب أن يكون 0 أو أكثر"),
+    sellPrice: z.number().min(0, "سعر البيع يجب أن يكون 0 أو أكثر"),
+    count: z.number().int().min(0, "الكمية يجب أن تكون 0 أو أكثر"),
+    location: z.string().min(1, "الموقع مطلوب"),
+});
 
+type TAddProductForm = z.infer<typeof addProductSchema>;
 type TCompany = { _id: string; productCount: number; totalValue: number };
 
 export function AddProductDialog() {
@@ -30,12 +34,13 @@ export function AddProductDialog() {
         queryKey: ["companies"],
     });
 
-    const { register, handleSubmit, reset, setValue, watch } = useForm<TAddProductForm>({
-        defaultValues: { name: "", company: "", price: 0, count: 0, location: "" },
+    const { register, handleSubmit, reset, setValue, control } = useForm<TAddProductForm>({
+        resolver: zodResolver(addProductSchema),
+        defaultValues: { name: "", company: "", buyPrice: 0, sellPrice: 0, count: 0, location: "" },
     });
 
-    const company = watch("company");
-    const location = watch("location");
+    const company = useWatch({ control, name: "company" });
+    const location = useWatch({ control, name: "location" });
 
     const { mutate, isPending } = useCreate("/api/products", {
         invalidateKeys: ["products", "locations", "companies"],
@@ -87,9 +92,9 @@ export function AddProductDialog() {
                             </Button>
                         </div>
                         {isNewCompany ? (
-                            <Input placeholder="اسم الشركة الجديدة" required {...register("company")} />
+                            <Input placeholder="اسم الشركة الجديدة" {...register("company")} />
                         ) : (
-                            <Select value={company} onValueChange={(v) => setValue("company", v)} required>
+                            <Select value={company} onValueChange={(v) => setValue("company", v)}>
                                 <SelectTrigger>
                                     <SelectValue placeholder="اختر الشركة" />
                                 </SelectTrigger>
@@ -105,29 +110,25 @@ export function AddProductDialog() {
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="name">اسم المنتج</Label>
-                        <Input id="name" placeholder="مثال: مقاس 1" required {...register("name")} />
+                        <Input id="name" placeholder="مثال: مقاس 1" {...register("name")} />
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                         <div className="space-y-2">
-                            <Label htmlFor="price">السعر (ج.م)</Label>
-                            <Input
-                                id="price"
-                                type="number"
-                                min="0"
-                                step="0.01"
-                                placeholder="0.00"
-                                required
-                                {...register("price", { valueAsNumber: true })}
-                            />
+                            <Label htmlFor="buyPrice">سعر الشراء (ج.م)</Label>
+                            <Input id="buyPrice" type="number" min="0" step="0.01" placeholder="0.00" {...register("buyPrice")} />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="count">الكمية</Label>
-                            <Input id="count" type="number" min="0" placeholder="0" required {...register("count", { valueAsNumber: true })} />
+                            <Label htmlFor="sellPrice">سعر البيع (ج.م)</Label>
+                            <Input id="sellPrice" type="number" min="0" step="0.01" placeholder="0.00" {...register("sellPrice")} />
                         </div>
                     </div>
                     <div className="space-y-2">
+                        <Label htmlFor="count">الكمية</Label>
+                        <Input id="count" type="number" min="0" placeholder="0" {...register("count")} />
+                    </div>
+                    <div className="space-y-2">
                         <Label>الموقع</Label>
-                        <Select value={location} onValueChange={(v) => setValue("location", v)} required>
+                        <Select value={location} onValueChange={(v) => setValue("location", v)}>
                             <SelectTrigger>
                                 <SelectValue placeholder="اختر الموقع" />
                             </SelectTrigger>

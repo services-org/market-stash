@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -10,16 +12,20 @@ import { Label } from "@/components/ui/label";
 import { useUpdate } from "@/hooks/api";
 import { TProduct } from "@/server/models/product";
 
-type TEditProductForm = {
-    price: number;
-    count: number;
-};
+const editProductSchema = z.object({
+    buyPrice: z.number().min(0, "سعر الشراء يجب أن يكون 0 أو أكثر"),
+    sellPrice: z.number().min(0, "سعر البيع يجب أن يكون 0 أو أكثر"),
+    count: z.number().int().min(0, "الكمية يجب أن تكون 0 أو أكثر"),
+});
+
+type TEditProductForm = z.infer<typeof editProductSchema>;
 
 export function EditProductDialog({ product }: Readonly<{ product: TProduct }>) {
     const [open, setOpen] = useState(false);
 
     const { register, handleSubmit } = useForm<TEditProductForm>({
-        defaultValues: { price: product.price, count: product.count },
+        resolver: zodResolver(editProductSchema),
+        defaultValues: { buyPrice: product.buyPrice, sellPrice: product.sellPrice, count: product.count },
     });
 
     const { mutate, isPending } = useUpdate(`/api/products/${product._id}`, {
@@ -44,12 +50,16 @@ export function EditProductDialog({ product }: Readonly<{ product: TProduct }>) 
                 </DialogHeader>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     <div className="space-y-2">
-                        <Label htmlFor="edit-price">السعر (ج.م)</Label>
-                        <Input id="edit-price" type="number" min="0" step="0.01" required {...register("price", { valueAsNumber: true })} />
+                        <Label htmlFor="edit-buyPrice">سعر الشراء (ج.م)</Label>
+                        <Input id="edit-buyPrice" type="number" min="0" step="0.01" {...register("buyPrice")} />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="edit-sellPrice">سعر البيع (ج.م)</Label>
+                        <Input id="edit-sellPrice" type="number" min="0" step="0.01" {...register("sellPrice")} />
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="edit-count">الكمية</Label>
-                        <Input id="edit-count" type="number" min="0" required {...register("count", { valueAsNumber: true })} />
+                        <Input id="edit-count" type="number" min="0" {...register("count")} />
                     </div>
                     <Button type="submit" className="w-full" disabled={isPending}>
                         {isPending ? "جاري الحفظ..." : "حفظ التعديلات"}

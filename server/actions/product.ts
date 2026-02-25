@@ -35,7 +35,7 @@ export async function getCompanies() {
             $group: {
                 _id: "$company",
                 productCount: { $sum: 1 },
-                totalValue: { $sum: { $multiply: ["$price", "$count"] } },
+                totalValue: { $sum: { $multiply: ["$sellPrice", "$count"] } },
             },
         },
         { $sort: { _id: 1 } },
@@ -66,7 +66,8 @@ export async function getLocations() {
 type CreateProductInput = {
     name: string;
     company: string;
-    price: number;
+    buyPrice: number;
+    sellPrice: number;
     count: number;
     location: string;
 };
@@ -79,7 +80,7 @@ export async function createProduct(data: CreateProductInput) {
     return product;
 }
 
-export async function updateProduct(id: string, data: { price?: number; count?: number }) {
+export async function updateProduct(id: string, data: { buyPrice?: number; sellPrice?: number; count?: number }) {
     await connectDB();
     const userId = await getUserId();
 
