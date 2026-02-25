@@ -12,6 +12,7 @@ export const metadata = {
         title: "أبو رقية",
     },
     icons: {
+        icon: "/images/logo.png",
         apple: "/images/logo.png",
     },
 };
