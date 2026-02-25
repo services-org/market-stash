@@ -4,17 +4,11 @@ import { Toaster } from "@/components/ui/sonner";
 import "@/public/css/globals.css";
 
 export const metadata = {
-    title: "أبو رقية",
-    description: "إدارة متجر أبو رقية",
+    title: "abo-roqia",
+    description: "abo-roqia",
     manifest: "/manifest.json",
-    appleWebApp: {
-        capable: true,
-        statusBarStyle: "black-translucent",
-        title: "أبو رقية",
-    },
     icons: {
         icon: "/images/logo.png",
-        apple: "/images/logo.png",
     },
 };
 
