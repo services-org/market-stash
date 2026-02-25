@@ -1,8 +1,6 @@
 import { TProduct } from "@/server/models/product";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { MapPin } from "lucide-react";
 import { formatNumber } from "@/lib/utils";
+import { MapPin, Box } from "lucide-react";
 import Link from "next/link";
 
 type ProductCardProps = {
@@ -11,30 +9,28 @@ type ProductCardProps = {
 
 export function ProductCard({ product }: ProductCardProps) {
     return (
-        <Card className="gap-2 border-border/60 py-3 transition-shadow hover:shadow-md">
-            <CardContent>
-                <Link href={`/companies/${product.company}`} className="flex items-start justify-between gap-3">
-                    <div className="min-w-0 flex-1 space-y-1.5">
-                        <h3 className="truncate text-sm font-semibold">{product.company}</h3>
-                        <p className="text-xs text-muted-foreground">{product.name}</p>
-                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                            <MapPin className="size-3" />
-                            <span>{product.location}</span>
-                        </div>
-                    </div>
-                    <div className="flex flex-col items-end gap-1.5">
-                        <Badge variant="secondary" className="font-mono text-xs font-semibold">
-                            بيع: {formatNumber(product.sellPrice)} ج.م
-                        </Badge>
-                        <Badge variant="outline" className="font-mono text-xs">
-                            شراء: {formatNumber(product.buyPrice)} ج.م
-                        </Badge>
-                        <span className="text-xs text-muted-foreground">
-                            الكمية: <span className="font-semibold text-foreground">{product.count}</span>
-                        </span>
-                    </div>
-                </Link>
-            </CardContent>
-        </Card>
+        <Link
+            href={`/companies/${product.company}`}
+            className="flex flex-col rounded-2xl border border-border/60 bg-card p-3 transition-all active:scale-[0.97] hover:shadow-md"
+        >
+            <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                <Box className="size-4 text-primary" />
+            </div>
+            <h3 className="truncate text-[13px] font-bold">{product.company}</h3>
+            <p className="mt-0.5 truncate text-xs text-muted-foreground">{product.name}</p>
+
+            <div className="mt-2 flex items-center gap-1 text-[11px] text-muted-foreground">
+                <MapPin className="size-3" />
+                <span>{product.location}</span>
+            </div>
+
+            <div className="mt-2.5 flex items-center justify-between border-t border-border/40 pt-2.5">
+                <div className="text-[11px]">
+                    <p className="font-bold text-primary">{formatNumber(product.sellPrice)}</p>
+                    <p className="text-muted-foreground">{formatNumber(product.buyPrice)}</p>
+                </div>
+                <div className="rounded-lg bg-muted px-2 py-1 text-[11px] font-bold">{product.count}</div>
+            </div>
+        </Link>
     );
 }

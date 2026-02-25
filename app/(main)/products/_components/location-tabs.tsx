@@ -11,7 +11,7 @@ type LocationTabsProps = {
 
 export function LocationTabs({ locations, active, onSelect }: LocationTabsProps) {
     return (
-        <div className="no-scrollbar flex gap-2 overflow-x-auto px-4 pb-3">
+        <div className="flex gap-2 overflow-x-auto px-4 pb-3">
             <Badge
                 variant={active === null ? "default" : "outline"}
                 onClick={() => onSelect(null)}
