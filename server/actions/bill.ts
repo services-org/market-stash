@@ -3,11 +3,6 @@ import { Bill, type TBillItem } from "@/server/models/bill";
 import { Product } from "@/server/models/product";
 import { getUserId } from "@/server/actions/product";
 
-// ─── Helpers ──────────────────────────────────────────────
-function ownerFilter(userId: string) {
-    return { $or: [{ userId }, { developerId: userId }] };
-}
-
 // ─── Queries ──────────────────────────────────────────────
 export async function getBills() {
     await connectDB();
@@ -16,7 +11,7 @@ export async function getBills() {
     const oneYearAgo = new Date();
     oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
 
-    const bills = await Bill.find({ ...ownerFilter(userId), createdAt: { $gte: oneYearAgo } }, { customerName: 1, total: 1, items: 1, createdAt: 1 })
+    const bills = await Bill.find({ userId, createdAt: { $gte: oneYearAgo } }, { customerName: 1, total: 1, items: 1, createdAt: 1 })
         .sort({ createdAt: -1 })
         .lean();
 
@@ -27,7 +22,7 @@ export async function getBill(id: string) {
     await connectDB();
     const userId = await getUserId();
 
-    const bill = await Bill.findOne({ _id: id, ...ownerFilter(userId) }).lean();
+    const bill = await Bill.findOne({ _id: id, userId }).lean();
     if (!bill) throw new Error("Bill not found");
     return bill;
 }
@@ -38,7 +33,7 @@ async function validateAndSubtractStock(userId: string, items: TBillItem[]) {
     if (dbItems.length === 0) return;
 
     const productIds = dbItems.map((item) => item.productId as string);
-    const products = await Product.find({ _id: { $in: productIds }, ...ownerFilter(userId) }).lean();
+    const products = await Product.find({ _id: { $in: productIds }, userId }).lean();
     const productMap = new Map(products.map((p) => [p._id.toString(), p]));
 
     // Validate all items first before any writes
@@ -67,7 +62,7 @@ async function restoreStock(userId: string, items: TBillItem[]) {
     await Product.bulkWrite(
         dbItems.map((item) => ({
             updateOne: {
-                filter: { _id: item.productId, ...ownerFilter(userId) },
+                filter: { _id: item.productId, userId },
                 update: { $inc: { count: item.count } },
             },
         })),
@@ -95,7 +90,7 @@ export async function updateBill(id: string, data: CreateBillInput) {
     await connectDB();
     const userId = await getUserId();
 
-    const existingBill = await Bill.findOne({ _id: id, ...ownerFilter(userId) });
+    const existingBill = await Bill.findOne({ _id: id, userId });
     if (!existingBill) throw new Error("Bill not found");
 
     // Restore old stock, then subtract new stock
@@ -115,7 +110,7 @@ export async function deleteBill(id: string) {
     await connectDB();
     const userId = await getUserId();
 
-    const bill = await Bill.findOne({ _id: id, ...ownerFilter(userId) });
+    const bill = await Bill.findOne({ _id: id, userId });
     if (!bill) throw new Error("Bill not found");
 
     await restoreStock(userId, bill.items);

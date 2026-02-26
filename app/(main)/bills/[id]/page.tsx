@@ -3,7 +3,7 @@ import { ArrowRight, Printer } from "lucide-react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
@@ -71,26 +71,24 @@ export default function BillDetailPage() {
                     <p className="text-xs text-muted-foreground">{date}</p>
                 </div>
 
-                <Card className="border-border/60">
-                    <CardContent className="p-0">
-                        <div className="grid grid-cols-[1fr_auto_auto_auto] gap-x-3 border-b border-border/40 px-4 py-2.5 text-xs font-semibold text-muted-foreground">
-                            <span>المنتج</span>
-                            <span>الكمية</span>
-                            <span>السعر</span>
-                            <span>المجموع</span>
+                <Card className="border-border/60" contentClassName="p-0">
+                    <div className="grid grid-cols-[1fr_auto_auto_auto] gap-x-3 border-b border-border/40 px-4 py-2.5 text-xs font-semibold text-muted-foreground">
+                        <span>المنتج</span>
+                        <span>الكمية</span>
+                        <span>السعر</span>
+                        <span>المجموع</span>
+                    </div>
+                    {bill.items.map((item, i) => (
+                        <div
+                            key={i}
+                            className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-x-3 border-b border-border/20 px-4 py-2.5 text-sm last:border-b-0"
+                        >
+                            <span className="truncate text-xs">{item.name}</span>
+                            <span className="font-mono text-xs">{item.count}</span>
+                            <span className="font-mono text-xs">{formatNumber(item.price)}</span>
+                            <span className="font-mono text-xs font-semibold">{formatNumber(item.price * item.count)}</span>
                         </div>
-                        {bill.items.map((item, i) => (
-                            <div
-                                key={i}
-                                className="grid grid-cols-[1fr_auto_auto_auto] items-center gap-x-3 border-b border-border/20 px-4 py-2.5 text-sm last:border-b-0"
-                            >
-                                <span className="truncate text-xs">{item.name}</span>
-                                <span className="font-mono text-xs">{item.count}</span>
-                                <span className="font-mono text-xs">{formatNumber(item.price)}</span>
-                                <span className="font-mono text-xs font-semibold">{formatNumber(item.price * item.count)}</span>
-                            </div>
-                        ))}
-                    </CardContent>
+                    ))}
                 </Card>
 
                 <Separator />

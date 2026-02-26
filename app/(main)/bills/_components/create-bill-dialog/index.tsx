@@ -1,5 +1,5 @@
 "use client";
-import { useForm, useFieldArray, useWatch } from "react-hook-form";
+import { useForm, useFieldArray, useWatch, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCallback, useState } from "react";
 import { Plus } from "lucide-react";
@@ -7,9 +7,9 @@ import { Plus } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { TProduct } from "@/server/models/product";
 import { Button } from "@/components/ui/button";
-import { Dialog } from "@/components/common";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Dialog } from "@/ui/dialog";
+import { Input } from "@/ui/input";
 
 import { billSchema, TBillForm } from "./schema";
 import { useCreate, useGet } from "@/hooks/api";
@@ -22,13 +22,15 @@ export function CreateBillDialog() {
         queryKey: ["products"],
     });
 
-    const { register, handleSubmit, reset, setValue, control } = useForm<TBillForm>({
+    const form = useForm<TBillForm>({
         resolver: zodResolver(billSchema),
         defaultValues: {
             customerName: "",
             items: [{ isFromDB: true, productId: "", name: "", location: "", count: 1, price: 0 }],
         },
     });
+
+    const { handleSubmit, reset, setValue, control } = form;
 
     const { fields, append, remove } = useFieldArray({ control, name: "items" });
     const items = useWatch({ control, name: "items" });
@@ -88,53 +90,51 @@ export function CreateBillDialog() {
             onOpenChange={setOpen}
             className="max-h-[85vh] overflow-y-auto"
         >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div className="space-y-2">
-                    <Label htmlFor="customerName">اسم العميل</Label>
-                    <Input id="customerName" placeholder="اسم العميل" {...register("customerName")} />
-                </div>
+            <FormProvider {...form}>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    <Input name="customerName" label="اسم العميل" placeholder="اسم العميل" />
 
-                <Separator />
+                    <Separator />
 
-                <div className="space-y-3">
-                    <Label>المنتجات</Label>
+                    <div className="space-y-3">
+                        <Label>المنتجات</Label>
 
-                    {fields.map((field, index) => (
-                        <BillItemForm
-                            key={field.id}
-                            index={index}
-                            item={items?.[index] || field}
-                            canRemove={fields.length > 1}
-                            register={register}
-                            setValue={setValue}
-                            onRemove={() => remove(index)}
-                            onProductSelect={onProductSelect}
-                            getFilteredProducts={getFilteredProducts}
-                        />
-                    ))}
+                        {fields.map((field, index) => (
+                            <BillItemForm
+                                key={field.id}
+                                index={index}
+                                item={items?.[index] || field}
+                                canRemove={fields.length > 1}
+                                setValue={setValue}
+                                onRemove={() => remove(index)}
+                                onProductSelect={onProductSelect}
+                                getFilteredProducts={getFilteredProducts}
+                            />
+                        ))}
 
-                    <Button
-                        type="button"
-                        variant="outline"
-                        size="sm"
-                        className="h-7 gap-1 text-xs"
-                        onClick={() => append({ isFromDB: true, productId: "", name: "", count: 1, price: 0, location: "" })}
-                    >
-                        <Plus className="size-3" /> إضافة منتج
+                        <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            className="h-7 gap-1 text-xs"
+                            onClick={() => append({ isFromDB: true, productId: "", name: "", count: 1, price: 0, location: "" })}
+                        >
+                            <Plus className="size-3" /> إضافة منتج
+                        </Button>
+                    </div>
+
+                    <Separator />
+
+                    <div className="flex items-center justify-between text-sm font-semibold">
+                        <span>الإجمالي</span>
+                        <span className="font-mono">{total.toFixed(2)} ج.م</span>
+                    </div>
+
+                    <Button type="submit" className="w-full" disabled={isPending}>
+                        {isPending ? "جاري الإنشاء..." : "إنشاء الفاتورة"}
                     </Button>
-                </div>
-
-                <Separator />
-
-                <div className="flex items-center justify-between text-sm font-semibold">
-                    <span>الإجمالي</span>
-                    <span className="font-mono">{total.toFixed(2)} ج.م</span>
-                </div>
-
-                <Button type="submit" className="w-full" disabled={isPending}>
-                    {isPending ? "جاري الإنشاء..." : "إنشاء الفاتورة"}
-                </Button>
-            </form>
+                </form>
+            </FormProvider>
         </Dialog>
     );
 }

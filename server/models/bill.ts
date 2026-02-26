@@ -11,7 +11,6 @@ export type TBillItem = {
 export type TBill = {
     _id: string;
     userId: string;
-    developerId?: string;
     customerName: string;
     items: TBillItem[];
     total: number;
@@ -24,10 +23,10 @@ type BillDocument = Omit<TBill, "_id"> & Document;
 const billItemSchema = new Schema<TBillItem>(
     {
         productId: { type: String },
-        name: { type: String, required: true },
+        name: { type: String, required: true, trim: true },
         count: { type: Number, required: true },
         price: { type: Number, required: true },
-        location: { type: String },
+        location: { type: String, trim: true },
     },
     { _id: false },
 );
@@ -35,8 +34,7 @@ const billItemSchema = new Schema<TBillItem>(
 const billSchema = new Schema<BillDocument>(
     {
         userId: { type: String, required: true, index: true },
-        developerId: { type: String, index: true, default: "user_3A8Loo15N5BmMyG5PciNjjjfkiR" },
-        customerName: { type: String, required: true },
+        customerName: { type: String, required: true, trim: true },
         items: { type: [billItemSchema], required: true },
         total: { type: Number, required: true },
     },

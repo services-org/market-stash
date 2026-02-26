@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Dialog } from "./dialog";
+import { Dialog } from "../../ui/dialog";
 
 type ConfirmDialogProps = {
     trigger: React.ReactNode;

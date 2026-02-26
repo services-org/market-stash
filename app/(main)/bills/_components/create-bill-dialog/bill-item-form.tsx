@@ -1,26 +1,24 @@
 import { Trash2, Database, PenLine } from "lucide-react";
-import { UseFormRegister, UseFormSetValue } from "react-hook-form";
+import { UseFormSetValue } from "react-hook-form";
 
-import { SelectBox } from "@/components/common";
 import { TProduct } from "@/server/models/product";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { LOCATIONS } from "@/lib/constants";
 import { TBillForm, TBillItem } from "./schema";
+import { Select } from "@/ui/select";
+import { Input } from "@/ui/input";
 
 type BillItemFormProps = {
     index: number;
     item: TBillItem;
     canRemove: boolean;
-    register: UseFormRegister<TBillForm>;
     setValue: UseFormSetValue<TBillForm>;
     onRemove: () => void;
     onProductSelect: (index: number, productId: string) => void;
     getFilteredProducts: (location: string) => TProduct[];
 };
 
-export function BillItemForm({ index, item, canRemove, register, setValue, onRemove, onProductSelect, getFilteredProducts }: BillItemFormProps) {
+export function BillItemForm({ index, item, canRemove, setValue, onRemove, onProductSelect, getFilteredProducts }: BillItemFormProps) {
     return (
         <div className="space-y-2 rounded-lg border border-border/60 p-3">
             <div className="flex items-center justify-between">
@@ -56,44 +54,38 @@ export function BillItemForm({ index, item, canRemove, register, setValue, onRem
 
             {item.isFromDB ? (
                 <div className="flex items-center justify-between gap-3">
-                    <SelectBox
+                    <Select
+                        name={`items.${index}.location`}
+                        items={LOCATIONS.map((loc) => ({ value: loc, label: loc }))}
+                        placeholder="اختر الموقع"
                         value={item.location}
                         onValueChange={(v) => {
-                            setValue(`items.${index}.location`, v);
                             setValue(`items.${index}.productId`, "");
+                            setValue(`items.${index}.location`, v);
                             setValue(`items.${index}.name`, "");
                             setValue(`items.${index}.price`, 0);
                         }}
-                        placeholder="اختر الموقع"
-                        items={LOCATIONS.map((loc) => ({ value: loc, label: loc }))}
-                        className="w-full"
                     />
-                    <SelectBox
-                        value={item.productId}
+                    <Select
                         onValueChange={(v) => onProductSelect(index, v)}
-                        disabled={!item.location}
+                        name={`items.${index}.productId`}
                         placeholder="اختر المنتج"
+                        disabled={!item.location}
+                        value={item.productId}
                         items={getFilteredProducts(item.location).map((p) => ({
                             value: p._id,
                             label: `${p.company} - ${p.name} (متاح: ${p.count})`,
                             disabled: p.count <= 0,
                         }))}
-                        className="w-full"
                     />
                 </div>
             ) : (
-                <Input placeholder="اسم المنتج" {...register(`items.${index}.name`)} />
+                <Input name={`items.${index}.name`} placeholder="اسم المنتج" />
             )}
 
             <div className="grid grid-cols-2 gap-2">
-                <div className="space-y-1">
-                    <Label className="text-xs">الكمية</Label>
-                    <Input type="number" min="1" {...register(`items.${index}.count`, { valueAsNumber: true })} />
-                </div>
-                <div className="space-y-1">
-                    <Label className="text-xs">السعر (ج.م)</Label>
-                    <Input type="number" min="0" step="0.01" {...register(`items.${index}.price`, { valueAsNumber: true })} />
-                </div>
+                <Input type="number" name={`items.${index}.count`} label="الكمية" inputProps={{ min: "1" }} />
+                <Input type="number" name={`items.${index}.price`} label="السعر (ج.م)" inputProps={{ min: "0" }} />
             </div>
         </div>
     );

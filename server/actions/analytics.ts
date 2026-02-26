@@ -3,17 +3,13 @@ import { connectDB } from "@/server/config/database";
 import { Product } from "@/server/models/product";
 import { Bill } from "@/server/models/bill";
 
-function ownerFilter(userId: string) {
-    return { $or: [{ userId }, { developerId: userId }] };
-}
-
 export async function getLocationCosts() {
     await connectDB();
     const { userId } = await auth();
     if (!userId) throw new Error("Unauthorized");
 
     const costs = await Product.aggregate([
-        { $match: ownerFilter(userId) },
+        { $match: { userId } },
         {
             $group: {
                 _id: "$location",
@@ -39,7 +35,7 @@ export async function getTopSoldProducts() {
     const topProducts = await Bill.aggregate([
         {
             $match: {
-                ...ownerFilter(userId),
+                userId,
                 createdAt: { $gte: thirtyDaysAgo },
             },
         },
@@ -65,4 +61,65 @@ export async function getTopSoldProducts() {
     ]);
 
     return topProducts;
+}
+
+export async function getYearlyMonthlyProfits() {
+    await connectDB();
+    const { userId } = await auth();
+    if (!userId) throw new Error("Unauthorized");
+
+    const profits = await Bill.aggregate([
+        { $match: { userId } },
+        { $unwind: "$items" },
+        // Lookup the current buyPrice from the Product collection
+        {
+            $lookup: {
+                from: "products",
+                let: { productId: { $toObjectId: "$items.productId" } },
+                pipeline: [{ $match: { $expr: { $eq: ["$_id", "$$productId"] } } }, { $project: { buyPrice: 1 } }],
+                as: "productDetails",
+            },
+        },
+        {
+            $addFields: {
+                product: { $arrayElemAt: ["$productDetails", 0] },
+            },
+        },
+        {
+            $group: {
+                _id: {
+                    year: { $year: "$createdAt" },
+                    month: { $month: "$createdAt" },
+                    day: { $dayOfMonth: "$createdAt" },
+                },
+                totalRevenue: { $sum: { $multiply: ["$items.count", "$items.price"] } },
+                totalCost: {
+                    $sum: {
+                        $multiply: ["$items.count", { $ifNull: ["$product.buyPrice", 0] }],
+                    },
+                },
+            },
+        },
+        {
+            $addFields: {
+                profit: { $subtract: ["$totalRevenue", "$totalCost"] },
+            },
+        },
+        {
+            $sort: { "_id.year": 1, "_id.month": 1, "_id.day": 1 },
+        },
+        {
+            $project: {
+                _id: 0,
+                year: "$_id.year",
+                month: "$_id.month",
+                day: "$_id.day",
+                totalRevenue: 1,
+                totalCost: 1,
+                profit: 1,
+            },
+        },
+    ]);
+
+    return profits;
 }

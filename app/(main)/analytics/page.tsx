@@ -1,5 +1,5 @@
+import { LocationCostsCard, TopProductsCard, ProfitsCard } from "./_components";
 import { PageHeader } from "@/components/common";
-import { LocationCostsCard, TopProductsCard } from "./_components";
 
 const Analytics = () => {
     return (
@@ -17,6 +17,11 @@ const Analytics = () => {
                         الأكثر مبيعاً <span className="text-sm font-normal text-muted-foreground">(آخر 30 يوم)</span>
                     </h2>
                     <TopProductsCard />
+                </section>
+
+                <section className="space-y-4">
+                    <h2 className="text-xl font-bold flex items-center gap-2">إحصائيات الأرباح</h2>
+                    <ProfitsCard />
                 </section>
             </div>
         </div>

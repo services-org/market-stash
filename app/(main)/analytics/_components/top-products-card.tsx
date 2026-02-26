@@ -18,19 +18,17 @@ export function TopProductsCard() {
 
     if (isPending) {
         return (
-            <div className="rounded-2xl border bg-card p-0 shadow-sm">
-                <div className="flex flex-col">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                        <div key={i} className="flex items-center gap-4 border-b p-4 last:border-0">
-                            <Skeleton className="size-10 rounded-full" />
-                            <div className="space-y-2 flex-1">
-                                <Skeleton className="h-4 w-1/3" />
-                                <Skeleton className="h-3 w-1/4" />
-                            </div>
-                            <Skeleton className="h-6 w-16" />
+            <div className="rounded-2xl flex flex-col border bg-card p-0 shadow-sm">
+                {Array.from({ length: 5 }).map((_, i) => (
+                    <div key={i} className="flex items-center gap-4 border-b p-4 last:border-0">
+                        <Skeleton className="size-10 rounded-full" />
+                        <div className="space-y-2 flex-1">
+                            <Skeleton className="h-4 w-1/3" />
+                            <Skeleton className="h-3 w-1/4" />
                         </div>
-                    ))}
-                </div>
+                        <Skeleton className="h-6 w-16" />
+                    </div>
+                ))}
             </div>
         );
     }
@@ -64,7 +62,7 @@ export function TopProductsCard() {
                         </div>
 
                         <div className="flex-1 min-w-0">
-                            <h4 className="truncate font-semibold text-sm sm:text-base leading-none mb-2">{product.name}</h4>
+                            <h4 className="truncate font-semibold text-sm sm:text-base mb-2">{product.name}</h4>
                             <p className="text-xs text-muted-foreground flex items-center gap-1">
                                 مبيعات الشهر: <span className="font-semibold text-foreground">{product.totalCountSold}</span> وحدة
                             </p>

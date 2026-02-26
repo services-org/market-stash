@@ -1,8 +1,8 @@
 "use client";
-
-import { useGet } from "@/hooks/api";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Building2, TrendingDown, TrendingUp } from "lucide-react";
+
+import { Skeleton } from "@/components/ui/skeleton";
+import { useGet } from "@/hooks/api";
 
 export type TLocationCost = {
     _id: string;
@@ -36,7 +36,7 @@ export function LocationCostsCard() {
     }
 
     return (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="space-y-4">
             {locations.map((loc) => {
                 const profit = loc.totalSellCost - loc.totalBuyCost;
                 const profitPercentage = loc.totalBuyCost > 0 ? (profit / loc.totalBuyCost) * 100 : 0;

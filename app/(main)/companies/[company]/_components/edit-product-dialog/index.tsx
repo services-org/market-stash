@@ -1,30 +1,25 @@
 "use client";
+import { useForm, useWatch, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, useWatch } from "react-hook-form";
 import { Pencil } from "lucide-react";
 import { useState } from "react";
 
 import { editProductSchema, TEditProductForm } from "./schema";
 import { TProduct } from "@/server/models/product";
 import { Button } from "@/components/ui/button";
-import { Dialog } from "@/components/common";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useUpdate } from "@/hooks/api";
+import { Dialog } from "@/ui/dialog";
+import { Input } from "@/ui/input";
 
 export function EditProductDialog({ product }: Readonly<{ product: TProduct }>) {
     const [open, setOpen] = useState(false);
 
-    const {
-        register,
-        handleSubmit,
-        control,
-        setError,
-        formState: { errors },
-    } = useForm<TEditProductForm>({
+    const form = useForm<TEditProductForm>({
         resolver: zodResolver(editProductSchema),
         defaultValues: { buyPrice: product.buyPrice, sellPrice: product.sellPrice, count: 0 },
     });
+
+    const { handleSubmit, control, setError } = form;
 
     const countChange = useWatch({ control, name: "count" }) || 0;
     const currentTotal = product.count + countChange;
@@ -57,32 +52,24 @@ export function EditProductDialog({ product }: Readonly<{ product: TProduct }>) 
             open={open}
             onOpenChange={setOpen}
         >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div className="space-y-2">
-                    <Label htmlFor="edit-buyPrice">سعر الشراء (ج.م)</Label>
-                    <Input id="edit-buyPrice" type="number" min="0" step="0.01" {...register("buyPrice", { valueAsNumber: true })} />
-                </div>
-                <div className="space-y-2">
-                    <Label htmlFor="edit-sellPrice">سعر البيع (ج.م)</Label>
-                    <Input id="edit-sellPrice" type="number" min="0" step="0.01" {...register("sellPrice", { valueAsNumber: true })} />
-                </div>
-                <div className="space-y-2">
-                    <Label htmlFor="edit-count">إضافة / خصم كمية</Label>
-                    <div className="flex gap-2">
-                        <Input id="edit-count" type="number" placeholder="مثال: 5 أو -5" {...register("count", { valueAsNumber: true })} />
+            <FormProvider {...form}>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    <Input name="buyPrice" type="number" label="سعر الشراء (ج.م)" inputProps={{ min: "0", step: "0.01" }} />
+                    <Input name="sellPrice" type="number" label="سعر البيع (ج.م)" inputProps={{ min: "0", step: "0.01" }} />
+                    <div className="space-y-2">
+                        <Input name="count" type="number" label="إضافة / خصم كمية" placeholder="مثال: 5 أو -5" />
+                        <p className="text-xs text-muted-foreground">
+                            الكمية الحالية: <span className="font-semibold text-foreground">{product.count}</span>
+                            {" | "}
+                            الكمية بعد التعديل:{" "}
+                            <span className={`font-semibold ${currentTotal < 0 ? "text-destructive" : "text-foreground"}`}>{currentTotal}</span>
+                        </p>
                     </div>
-                    {errors.count && <p className="text-xs text-destructive">{errors.count.message}</p>}
-                    <p className="text-xs text-muted-foreground">
-                        الكمية الحالية: <span className="font-semibold text-foreground">{product.count}</span>
-                        {" | "}
-                        الكمية بعد التعديل:{" "}
-                        <span className={`font-semibold ${currentTotal < 0 ? "text-destructive" : "text-foreground"}`}>{currentTotal}</span>
-                    </p>
-                </div>
-                <Button type="submit" className="w-full" disabled={isPending}>
-                    {isPending ? "جاري الحفظ..." : "حفظ التعديلات"}
-                </Button>
-            </form>
+                    <Button type="submit" className="w-full" disabled={isPending}>
+                        {isPending ? "جاري الحفظ..." : "حفظ التعديلات"}
+                    </Button>
+                </form>
+            </FormProvider>
         </Dialog>
     );
 }
