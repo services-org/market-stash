@@ -21,8 +21,6 @@ type BillItemFormProps = {
 };
 
 export function BillItemForm({ index, item, canRemove, register, setValue, onRemove, onProductSelect, getFilteredProducts }: BillItemFormProps) {
-    const { isFromDB, location: selectedLocation, productId } = item;
-
     return (
         <div className="space-y-2 rounded-lg border border-border/60 p-3">
             <div className="flex items-center justify-between">
@@ -32,14 +30,14 @@ export function BillItemForm({ index, item, canRemove, register, setValue, onRem
                     size="sm"
                     className="h-6 gap-1 px-2 text-xs text-muted-foreground"
                     onClick={() => {
-                        setValue(`items.${index}.isFromDB`, !isFromDB);
+                        setValue(`items.${index}.isFromDB`, !item.isFromDB);
                         setValue(`items.${index}.productId`, "");
                         setValue(`items.${index}.name`, "");
                         setValue(`items.${index}.price`, 0);
                         setValue(`items.${index}.location`, "");
                     }}
                 >
-                    {isFromDB ? (
+                    {item.isFromDB ? (
                         <>
                             <Database className="size-3" /> من المخازن
                         </>
@@ -56,10 +54,10 @@ export function BillItemForm({ index, item, canRemove, register, setValue, onRem
                 )}
             </div>
 
-            {isFromDB ? (
+            {item.isFromDB ? (
                 <div className="flex items-center justify-between gap-3">
                     <SelectBox
-                        value={selectedLocation}
+                        value={item.location}
                         onValueChange={(v) => {
                             setValue(`items.${index}.location`, v);
                             setValue(`items.${index}.productId`, "");
@@ -71,11 +69,11 @@ export function BillItemForm({ index, item, canRemove, register, setValue, onRem
                         className="w-full"
                     />
                     <SelectBox
-                        value={productId}
+                        value={item.productId}
                         onValueChange={(v) => onProductSelect(index, v)}
-                        disabled={!selectedLocation}
+                        disabled={!item.location}
                         placeholder="اختر المنتج"
-                        items={getFilteredProducts(selectedLocation).map((p) => ({
+                        items={getFilteredProducts(item.location).map((p) => ({
                             value: p._id,
                             label: `${p.company} - ${p.name} (متاح: ${p.count})`,
                             disabled: p.count <= 0,

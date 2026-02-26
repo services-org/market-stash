@@ -47,24 +47,24 @@ export function AddProductDialog() {
 
     return (
         <Dialog
+            onOpenChange={setOpen}
+            title="إضافة منتج"
+            open={open}
             trigger={
                 <Button size="icon" className="size-9 rounded-full shadow-md">
                     <Plus className="size-4" />
                 </Button>
             }
-            title="إضافة منتج"
-            open={open}
-            onOpenChange={setOpen}
         >
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div className="space-y-2">
                     <div className="flex items-center justify-between">
                         <Label>الشركة</Label>
                         <Button
-                            type="button"
-                            variant="ghost"
-                            size="sm"
                             className="h-6 gap-1 px-2 text-xs text-muted-foreground"
+                            variant="ghost"
+                            type="button"
+                            size="sm"
                             onClick={() => {
                                 setIsNewCompany(!isNewCompany);
                                 setValue("company", "");

@@ -74,7 +74,7 @@ export function CreateBillDialog() {
         [products],
     );
 
-    const total = items.reduce((sum, item) => sum + (item.price || 0) * (item.count || 0), 0);
+    const total = (items || []).reduce((sum, item) => sum + (item?.price || 0) * (item?.count || 0), 0);
 
     return (
         <Dialog
@@ -103,7 +103,7 @@ export function CreateBillDialog() {
                         <BillItemForm
                             key={field.id}
                             index={index}
-                            item={items[index]}
+                            item={items?.[index] || field}
                             canRemove={fields.length > 1}
                             register={register}
                             setValue={setValue}

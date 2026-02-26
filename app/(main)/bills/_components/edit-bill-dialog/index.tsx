@@ -82,7 +82,7 @@ export function EditBillDialog({ bill }: Readonly<{ bill: TBill }>) {
         [products],
     );
 
-    const total = items.reduce((sum, item) => sum + (item.price || 0) * (item.count || 0), 0);
+    const total = (items || []).reduce((sum, item) => sum + (item?.price || 0) * (item?.count || 0), 0);
 
     return (
         <Dialog
@@ -112,7 +112,7 @@ export function EditBillDialog({ bill }: Readonly<{ bill: TBill }>) {
                         <BillItemForm
                             key={field.id}
                             index={index}
-                            item={items[index]}
+                            item={items?.[index] || field}
                             canRemove={fields.length > 1}
                             register={register}
                             setValue={setValue}
