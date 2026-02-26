@@ -15,14 +15,14 @@ import { Label } from "@/components/ui/label";
 type TCompany = { _id: string; productCount: number; totalValue: number };
 
 export function AddProductDialog() {
-    const [open, setOpen] = useState(false);
     const [isNewCompany, setIsNewCompany] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const { data: companies = [] } = useGet<TCompany[]>("/api/companies", {
         queryKey: ["companies"],
     });
 
-    const { register, handleSubmit, reset, setValue, control } = useForm<TAddProductForm>({
+    const { register, handleSubmit, reset, setValue, control, formState } = useForm<TAddProductForm>({
         resolver: zodResolver(addProductSchema),
         defaultValues: { name: "", company: "", buyPrice: 0, sellPrice: 0, count: 0, location: "" },
     });
@@ -42,6 +42,8 @@ export function AddProductDialog() {
     function onSubmit(data: TAddProductForm) {
         mutate(data);
     }
+
+    console.log(formState.errors);
 
     return (
         <Dialog
@@ -97,16 +99,30 @@ export function AddProductDialog() {
                 <div className="grid grid-cols-2 gap-3">
                     <div className="space-y-2">
                         <Label htmlFor="buyPrice">سعر الشراء (ج.م)</Label>
-                        <Input id="buyPrice" type="number" min="0" step="0.01" placeholder="0.00" {...register("buyPrice")} />
+                        <Input
+                            id="buyPrice"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            placeholder="0.00"
+                            {...register("buyPrice", { valueAsNumber: true })}
+                        />
                     </div>
                     <div className="space-y-2">
                         <Label htmlFor="sellPrice">سعر البيع (ج.م)</Label>
-                        <Input id="sellPrice" type="number" min="0" step="0.01" placeholder="0.00" {...register("sellPrice")} />
+                        <Input
+                            id="sellPrice"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            placeholder="0.00"
+                            {...register("sellPrice", { valueAsNumber: true })}
+                        />
                     </div>
                 </div>
                 <div className="space-y-2">
                     <Label htmlFor="count">الكمية</Label>
-                    <Input id="count" type="number" min="0" placeholder="0" {...register("count")} />
+                    <Input id="count" type="number" min="0" placeholder="0" {...register("count", { valueAsNumber: true })} />
                 </div>
                 <div className="space-y-2">
                     <Label>الموقع</Label>
