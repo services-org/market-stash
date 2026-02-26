@@ -69,7 +69,7 @@ export function CreateBillDialog() {
     const getFilteredProducts = useCallback(
         (location: string) => {
             const filtered = location ? products.filter((p) => p.location === location) : products;
-            return [...filtered].sort((a, b) => (b.count > 0 ? 1 : 0) - (a.count > 0 ? 1 : 0));
+            return filtered.slice().sort((a, b) => (b.count > 0 ? 1 : 0) - (a.count > 0 ? 1 : 0));
         },
         [products],
     );

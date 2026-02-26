@@ -21,7 +21,7 @@ export function Dialog({ trigger, title, children, open: controlledOpen, onOpenC
     return (
         <ShadDialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>{trigger}</DialogTrigger>
-            <DialogContent className={`max-w-[calc(100vw-2rem)] ${className ?? ""}`}>
+            <DialogContent className={`max-w-[calc(100vw-2rem)] ${className ?? ""}`} aria-describedby={undefined}>
                 <DialogHeader>
                     <DialogTitle>{title}</DialogTitle>
                 </DialogHeader>

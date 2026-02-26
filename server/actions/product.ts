@@ -84,7 +84,10 @@ export async function updateProduct(id: string, data: { buyPrice?: number; sellP
     await connectDB();
     const userId = await getUserId();
 
-    const product = await Product.findOneAndUpdate({ _id: id, ...ownerFilter(userId) }, data, { new: true }).lean();
+    const { count, ...setFields } = data;
+    const updateQuery = count !== undefined ? { $set: setFields, $inc: { count } } : { $set: setFields };
+
+    const product = await Product.findOneAndUpdate({ _id: id, ...ownerFilter(userId) }, updateQuery, { new: true }).lean();
     if (!product) throw new Error("Product not found");
     return product;
 }
