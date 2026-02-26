@@ -21,14 +21,14 @@ const productSchema = new Schema<ProductDocument>(
         userId: { type: String, required: true, index: true },
         developerId: { type: String, index: true, default: "user_3A8Loo15N5BmMyG5PciNjjjfkiR" },
 
-        company: { type: String, required: true },
-        name: { type: String, required: true },
+        company: { type: String, required: true, trim: true },
+        name: { type: String, required: true, trim: true },
 
         count: { type: Number, required: true, default: 0 },
         buyPrice: { type: Number, required: true, default: 0 },
         sellPrice: { type: Number, required: true, default: 0 },
 
-        location: { type: String, required: true },
+        location: { type: String, required: true, trim: true },
     },
     { timestamps: true },
 );

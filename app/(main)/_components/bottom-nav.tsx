@@ -2,14 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Package, Building2, Receipt } from "lucide-react";
+import { Package, Building2, Receipt, LineChart } from "lucide-react";
 import { UserButton } from "@clerk/nextjs";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
     { href: "/products", label: "المنتجات", icon: Package },
     { href: "/companies", label: "الشركات", icon: Building2 },
+    { href: "user", label: "الحساب", icon: Building2 },
     { href: "/bills", label: "الفواتير", icon: Receipt },
+    { href: "/analytics", label: "الاحصائيات", icon: LineChart },
 ];
 
 export function BottomNav() {
@@ -20,6 +22,15 @@ export function BottomNav() {
             <div className="mx-auto flex max-w-md items-center justify-around py-2">
                 {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
                     const isActive = pathname.startsWith(href);
+
+                    if (href === "user") {
+                        return (
+                            <div key={href} className="flex flex-col items-center gap-0.5 px-3 py-1 text-xs text-muted-foreground">
+                                <UserButton fallback="/sign-in" />
+                                <span>{label}</span>
+                            </div>
+                        );
+                    }
                     return (
                         <Link
                             key={href}
@@ -34,10 +45,6 @@ export function BottomNav() {
                         </Link>
                     );
                 })}
-                <div className="flex flex-col items-center gap-0.5 px-3 py-1 text-xs text-muted-foreground">
-                    <UserButton fallback="/sign-in" />
-                    <span>الحساب</span>
-                </div>
             </div>
         </nav>
     );
