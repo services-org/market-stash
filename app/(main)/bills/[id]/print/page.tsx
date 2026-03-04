@@ -5,6 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { formatNumber } from "@/lib/utils";
 import { TBill } from "@/server/models/bill";
 import { useGet } from "@/hooks/api";
+import Image from "next/image";
 
 export default function PrintBillPage() {
     const { id } = useParams<{ id: string }>();
@@ -39,9 +40,8 @@ export default function PrintBillPage() {
         <div className="mx-auto p-5 text-foreground print:text-black not-print:max-w-3xl" dir="rtl">
             {/* Header */}
             <div className="mb-6 border-b-[3px] border-orange-500 pb-5 text-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/logo.png" alt="logo" className="mx-auto mb-3 block" height={80} width={80} />
-                <h1 className="mb-1 text-[22px] font-extrabold print:text-black">ابو رقية للتجارة والتوزيع</h1>
+                <Image src="/images/logo.png" alt="logo" width={80} height={150} className="object-contain mx-auto block" />
+                <h1 className="mb-1 text-[22px] font-extrabold print:text-black">ابورقية للتجارة والتوزيع</h1>
                 <p className="text-xs leading-relaxed text-muted-foreground print:text-gray-500">الورديان - نهاية شارع الامير لؤلؤ - موقف المتراس</p>
             </div>
 
