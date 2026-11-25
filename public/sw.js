@@ -1,6 +1,6 @@
 // Minimal service worker: makes the app installable and shows an offline page when there is no
 // connection. Data (API) requests are never cached, so stock and bills are always fresh.
-const CACHE = "abo-roqia-v1";
+const CACHE = "abo-roqia-v3";
 const OFFLINE_URL = "/offline.html";
 const PRECACHE = [OFFLINE_URL, "/images/icon-192.png"];
 

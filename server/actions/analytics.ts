@@ -1,4 +1,3 @@
-import { getUserId } from "@/server/actions/product";
 import { connectDB } from "@/server/config/database";
 import { Product } from "@/server/models/product";
 import { Bill } from "@/server/models/bill";
@@ -7,10 +6,9 @@ import { Types } from "mongoose";
 
 export async function getLocationCosts() {
     await connectDB();
-    const userId = await getUserId();
 
     const costs = await Product.aggregate([
-        { $match: { userId, deletedAt: null } },
+        { $match: { deletedAt: null } },
         {
             $group: {
                 _id: "$location",
@@ -27,7 +25,6 @@ export async function getLocationCosts() {
 
 export async function getTopSoldProducts() {
     await connectDB();
-    const userId = await getUserId();
 
     const thirtyDaysAgo = new Date();
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
@@ -35,7 +32,6 @@ export async function getTopSoldProducts() {
     const topProducts = await Bill.aggregate([
         {
             $match: {
-                userId,
                 deletedAt: null,
                 createdAt: { $gte: thirtyDaysAgo },
             },
@@ -66,10 +62,9 @@ export async function getTopSoldProducts() {
 
 export async function getYearlyMonthlyProfits() {
     await connectDB();
-    const userId = await getUserId();
 
     const profits = await Bill.aggregate([
-        { $match: { userId, deletedAt: null } },
+        { $match: { deletedAt: null } },
         // Spread the bill discount over its items so revenue is the real amount charged
         {
             $addFields: {
@@ -171,16 +166,15 @@ export async function getYearlyMonthlyProfits() {
 /** Products in stock that were not sold during the last 60 days (and are older than that). */
 export async function getDeadStock() {
     await connectDB();
-    const userId = await getUserId();
 
     const since = new Date();
     since.setDate(since.getDate() - 60);
 
-    const soldIds = (await Bill.distinct("items.productId", { userId, deletedAt: null, createdAt: { $gte: since } })) as string[];
+    const soldIds = (await Bill.distinct("items.productId", { deletedAt: null, createdAt: { $gte: since } })) as string[];
     const validIds = soldIds.filter((id) => Types.ObjectId.isValid(id)).map((id) => new Types.ObjectId(id));
 
     const products = await Product.find(
-        { userId, deletedAt: null, count: { $gt: 0 }, createdAt: { $lt: since }, _id: { $nin: validIds } },
+        { deletedAt: null, count: { $gt: 0 }, createdAt: { $lt: since }, _id: { $nin: validIds } },
         { name: 1, company: 1, location: 1, count: 1, buyPrice: 1 },
     ).lean();
 

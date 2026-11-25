@@ -5,7 +5,6 @@ import { Bill } from "@/server/models/bill";
 import { Expense } from "@/server/models/expense";
 import { Purchase } from "@/server/models/purchase";
 import { Product } from "@/server/models/product";
-import { getUserId } from "@/server/actions/product";
 import { AppError } from "@/server/errors";
 import { stocktakeInput } from "@/server/validation";
 
@@ -32,7 +31,6 @@ const inRange = (date: Date | undefined, from: Date, to: Date) => !!date && date
 /** Totals for a period (a day, normally). `from` is inclusive, `to` exclusive; both ISO timestamps. */
 export async function getDailyReport(fromIso: string, toIso: string): Promise<TDailyReport> {
     await connectDB();
-    const userId = await getUserId();
 
     const from = new Date(fromIso);
     const to = new Date(toIso);
@@ -40,7 +38,6 @@ export async function getDailyReport(fromIso: string, toIso: string): Promise<TD
 
     const bills = await Bill.find(
         {
-            userId,
             deletedAt: null,
             $or: [{ createdAt: { $gte: from, $lt: to } }, { "payments.at": { $gte: from, $lt: to } }, { "returns.at": { $gte: from, $lt: to } }],
         },
@@ -79,8 +76,8 @@ export async function getDailyReport(fromIso: string, toIso: string): Promise<TD
     }
 
     const [expenses, purchases] = await Promise.all([
-        Expense.aggregate<{ total: number }>([{ $match: { userId, deletedAt: null, date: { $gte: from, $lt: to } } }, { $group: { _id: null, total: { $sum: "$amount" } } }]),
-        Purchase.aggregate<{ total: number }>([{ $match: { userId, deletedAt: null, createdAt: { $gte: from, $lt: to } } }, { $group: { _id: null, total: { $sum: "$total" } } }]),
+        Expense.aggregate<{ total: number }>([{ $match: { deletedAt: null, date: { $gte: from, $lt: to } } }, { $group: { _id: null, total: { $sum: "$amount" } } }]),
+        Purchase.aggregate<{ total: number }>([{ $match: { deletedAt: null, createdAt: { $gte: from, $lt: to } } }, { $group: { _id: null, total: { $sum: "$total" } } }]),
     ]);
 
     return {
@@ -100,12 +97,11 @@ export async function getDailyReport(fromIso: string, toIso: string): Promise<TD
 /** Sets the counted quantity of several products at once (stocktake). */
 export async function applyStocktake(body: unknown) {
     await connectDB();
-    const userId = await getUserId();
     const { items } = stocktakeInput.parse(body);
     if (items.some(({ id }) => !isValidObjectId(id))) throw new AppError("منتج غير صالح");
 
     const result = await Product.bulkWrite(
-        items.map(({ id, count }) => ({ updateOne: { filter: { _id: id, userId, deletedAt: null }, update: { $set: { count } } } })),
+        items.map(({ id, count }) => ({ updateOne: { filter: { _id: id, deletedAt: null }, update: { $set: { count } } } })),
     );
     return { updated: result.modifiedCount };
 }

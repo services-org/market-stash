@@ -26,8 +26,7 @@ export type TBillPayment = { amount: number; at: Date };
 
 export type TBill = {
     _id: string;
-    userId: string;
-    /** Sequential invoice number per user. Missing on legacy bills. */
+    /** Sequential invoice number. Missing on legacy bills. */
     number?: number;
     customerName: string;
     phone?: string;
@@ -79,7 +78,6 @@ const billPaymentSchema = new Schema<TBillPayment>({ amount: { type: Number, req
 
 const billSchema = new Schema<BillDocument>(
     {
-        userId: { type: String, required: true, index: true },
         number: { type: Number },
         customerName: { type: String, required: true, trim: true },
         phone: { type: String, trim: true },
@@ -98,7 +96,7 @@ const billSchema = new Schema<BillDocument>(
     { timestamps: true },
 );
 
-billSchema.index({ userId: 1, createdAt: -1 });
-billSchema.index({ userId: 1, customerName: 1 });
+billSchema.index({ createdAt: -1 });
+billSchema.index({ customerName: 1 });
 
 export const Bill: Model<BillDocument> = mongoose.models.Bill || mongoose.model<BillDocument>("Bill", billSchema);

@@ -13,7 +13,6 @@
         "test": "DATABASE_URI=mongodb://127.0.0.1:27017/abo-roqia-store DATABASE_URL=mongodb://127.0.0.1:27017/abo-roqia-store bun test scripts --timeout 60000"
     },
     "dependencies": {
-        "@clerk/nextjs": "^6.38.2",
         "@hookform/resolvers": "^5.2.2",
         "@tanstack/react-query": "^5.90.21",
         "@types/lodash": "^4.17.24",

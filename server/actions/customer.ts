@@ -1,6 +1,7 @@
 import { connectDB } from "@/server/config/database";
 import { Bill } from "@/server/models/bill";
-import { getUserId } from "@/server/actions/product";
+import { CustomerRecord, saveCustomer } from "@/server/models/customer";
+import { customerInput } from "@/server/validation";
 
 export type TCustomer = {
     _id: string;
@@ -16,10 +17,9 @@ export type TCustomer = {
 /** Customers are derived from the bills: one row per customer name. */
 export async function getCustomers() {
     await connectDB();
-    const userId = await getUserId();
 
     const customers = await Bill.aggregate<TCustomer>([
-        { $match: { userId, deletedAt: null } },
+        { $match: { deletedAt: null } },
         { $sort: { createdAt: -1 } },
         // Legacy bills may carry trailing spaces in the name
         { $addFields: { customerKey: { $trim: { input: "$customerName" } } } },
@@ -54,15 +54,34 @@ export async function getCustomers() {
         { $sort: { lastDate: -1 } },
     ]);
 
-    return customers;
+    // Customers saved on purpose: their phone / address win, and the ones without bills yet are listed too
+    const saved = await CustomerRecord.find({}).lean();
+    const byName = new Map(customers.map((c) => [c._id, c]));
+    for (const record of saved) {
+        const existing = byName.get(record.name);
+        if (existing) {
+            if (record.phone) existing.phone = record.phone;
+            if (record.address) existing.address = record.address;
+        } else {
+            customers.push({ _id: record.name, phone: record.phone, address: record.address, billsCount: 0, totalNet: 0, totalPaid: 0, balance: 0, lastDate: record.createdAt });
+        }
+    }
+
+    return customers.sort((a, b) => new Date(b.lastDate).getTime() - new Date(a.lastDate).getTime());
+}
+
+/** Adds a customer (or updates his phone / address) without creating a bill. */
+export async function createCustomer(body: unknown) {
+    await connectDB();
+    const data = customerInput.parse(body);
+    return saveCustomer(data);
 }
 
 /** All bills of a customer (newest first) for the account statement. */
 export async function getCustomerBills(name: string) {
     await connectDB();
-    const userId = await getUserId();
 
-    return Bill.find({ userId, deletedAt: null, $expr: { $eq: [{ $trim: { input: "$customerName" } }, name.trim()] } })
+    return Bill.find({ deletedAt: null, $expr: { $eq: [{ $trim: { input: "$customerName" } }, name.trim()] } })
         .sort({ createdAt: -1 })
         .lean();
 }

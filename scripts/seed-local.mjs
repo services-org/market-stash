@@ -1,7 +1,7 @@
 // Loads the sample data in server/temp/*.json into a LOCAL database for testing.
 // Refuses to run against a remote database, and refuses if the user already has data.
-// Usage: bun scripts/seed-local.mjs [clerkUserId]
-//   The Clerk user id defaults to the one inside the JSON files; pass yours if you sign in with another account.
+// Usage: bun scripts/seed-local.mjs [userId]
+//   The user id defaults to the one inside the JSON files (the app adopts the id that its data already uses).
 import { readFileSync } from "node:fs";
 import mongoose from "mongoose";
 

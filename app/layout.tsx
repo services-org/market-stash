@@ -1,4 +1,3 @@
-import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata, Viewport } from "next";
 import { Marhey } from "next/font/google";
 import "@/public/css/globals.css";
@@ -33,14 +32,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <ClerkProvider>
-            <html lang="ar" dir="rtl" className="dark" suppressHydrationWarning>
-                <body className={`${marhey.variable} antialiased`} suppressHydrationWarning>
-                    <QueryProvider>{children}</QueryProvider>
-                    <Toaster position="top-center" richColors dir="rtl" />
-                    <ServiceWorkerRegister />
-                </body>
-            </html>
-        </ClerkProvider>
+        <html lang="ar" dir="rtl" className="dark" suppressHydrationWarning>
+            <body className={`${marhey.variable} antialiased`} suppressHydrationWarning>
+                <QueryProvider>{children}</QueryProvider>
+                <Toaster position="top-center" richColors dir="rtl" />
+                <ServiceWorkerRegister />
+            </body>
+        </html>
     );
 }

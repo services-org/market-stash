@@ -1,6 +1,5 @@
 "use client";
 import { Banknote, Building2, ClipboardCheck, Download, FileText, House, LineChart, Package, PackageX, Receipt, ShoppingCart, Users, Wallet, type LucideIcon } from "lucide-react";
-import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -59,10 +58,8 @@ export function AppDrawer({ lowStockCount, onNavigate }: Readonly<AppDrawerProps
     return (
         <SheetContent aria-describedby={undefined}>
             <div className="flex items-center gap-3 border-b border-border/60 px-4 pb-4 pt-5">
-                <UserButton />
                 <div className="min-w-0">
                     <SheetTitle>ابورقية للتجارة والتوزيع</SheetTitle>
-                    <p className="text-xs text-muted-foreground">حسابي</p>
                 </div>
             </div>
 

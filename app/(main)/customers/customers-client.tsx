@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { formatNumber, matchesSearch, cn } from "@/lib/utils";
 import type { TCustomer } from "@/server/actions/customer";
 import { useGet } from "@/hooks/api";
+import { AddCustomerDialog } from "./add-customer-dialog";
 
 export function CustomersClient({ initialDebt }: Readonly<{ initialDebt: boolean }>) {
     const [onlyDebt, setOnlyDebt] = useState(initialDebt);
@@ -28,7 +29,7 @@ export function CustomersClient({ initialDebt }: Readonly<{ initialDebt: boolean
 
     return (
         <>
-            <PageHeader title={onlyDebt ? "المديونيات" : "العملاء"} subtitle={isPending ? undefined : `${filtered.length} عميل`}>
+            <PageHeader title={onlyDebt ? "المديونيات" : "العملاء"} subtitle={isPending ? undefined : `${filtered.length} عميل`} action={<AddCustomerDialog />}>
                 <div className="space-y-2 px-4 pb-3">
                     <SearchInput value={query} onChange={setQuery} placeholder="ابحث بالاسم أو الهاتف أو العنوان" />
                     <div className="flex gap-2">
@@ -63,7 +64,7 @@ export function CustomersClient({ initialDebt }: Readonly<{ initialDebt: boolean
                 {isPending ? (
                     Array.from({ length: 5 }).map((_, i) => <Skeleton key={i} className="h-20 w-full rounded-2xl" />)
                 ) : filtered.length === 0 ? (
-                    <EmptyState message={customers.length === 0 ? "لا يوجد عملاء بعد. سيظهرون هنا بعد إنشاء أول فاتورة." : "لا توجد نتائج."} />
+                    <EmptyState message={customers.length === 0 ? "لا يوجد عملاء بعد. اضغط + لإضافة عميل، أو سيظهر هنا بعد أول فاتورة." : "لا توجد نتائج."} />
                 ) : (
                     filtered.map((customer) => (
                         <Link
@@ -74,8 +75,9 @@ export function CustomersClient({ initialDebt }: Readonly<{ initialDebt: boolean
                             <div className="min-w-0 flex-1 space-y-1">
                                 <h3 className="truncate text-sm font-bold">{customer._id}</h3>
                                 <p className="text-xs text-muted-foreground">
-                                    {customer.billsCount} فاتورة • آخر فاتورة{" "}
-                                    {new Date(customer.lastDate).toLocaleDateString("ar-EG", { day: "numeric", month: "short" })}
+                                    {customer.billsCount === 0
+                                        ? "لا توجد فواتير بعد"
+                                        : `${customer.billsCount} فاتورة • آخر فاتورة ${new Date(customer.lastDate).toLocaleDateString("ar-EG", { day: "numeric", month: "short" })}`}
                                 </p>
                                 {customer.phone && <p className="font-mono text-xs text-muted-foreground">{customer.phone}</p>}
                             </div>

@@ -6,6 +6,7 @@ import { Plus } from "lucide-react";
 
 import { billSchema, TBillForm } from "./create-bill-dialog/schema";
 import { BillItemForm } from "./create-bill-dialog/bill-item-form";
+import { CustomerField, type TCustomerOption } from "./customer-field";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -14,7 +15,6 @@ import { formatNumber } from "@/lib/utils";
 import { useGet } from "@/hooks/api";
 import { Input } from "@/ui/input";
 
-type TCustomerOption = { _id: string; phone?: string; address?: string };
 
 export type TBillPayload = {
     customerName: string;
@@ -111,7 +111,7 @@ export function BillForm({ defaultValues, submitLabel, pendingLabel, isPending, 
     return (
         <FormProvider {...form}>
             <form onSubmit={handleSubmit(submit)} className="space-y-4">
-                <Input name="customerName" label="اسم العميل" placeholder="اسم العميل" suggestions={customers.map((c) => c._id)} />
+                <CustomerField customers={customers} />
                 <div className="grid grid-cols-2 gap-3">
                     <Input name="phone" type="tel" label="رقم الهاتف" inputProps={{ inputMode: "tel" }} />
                     <Input name="deliveryDate" type="date" label="تاريخ التسليم" />

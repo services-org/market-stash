@@ -20,7 +20,6 @@ export function errorResponse(error: unknown) {
     if (error instanceof AppError) return NextResponse.json({ error: error.message }, { status: error.status });
 
     const message = error instanceof Error ? error.message : "Internal Server Error";
-    if (message === "Unauthorized") return NextResponse.json({ error: message }, { status: 401 });
     if (message.endsWith("not found")) return NextResponse.json({ error: message }, { status: 404 });
 
     console.error(error);

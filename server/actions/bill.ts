@@ -5,26 +5,26 @@ import { Bill, type TBillItem, type TBillReturn } from "@/server/models/bill";
 import { billRemaining, billPaid } from "@/lib/bill";
 import { Product } from "@/server/models/product";
 import { Counter, nextSequence } from "@/server/models/counter";
-import { getUserId } from "@/server/actions/product";
+import { saveCustomer } from "@/server/models/customer";
 import { AppError } from "@/server/errors";
 import { billInput, paymentInput, returnInput, type TBillInput } from "@/server/validation";
 
 // ─── Invoice numbers ──────────────────────────────────────
-const numbered = new Set<string>();
+let numbered = false;
 
 /**
  * Gives every bill that has no invoice number one (oldest first) and moves the counter past them.
  * Idempotent and safe to run concurrently: a bill is only numbered if it still has no number, and the
- * numbers are reserved from the counter atomically. Runs once per server process and user.
+ * numbers are reserved from the counter atomically. Runs once per server process.
  */
-export async function ensureBillNumbers(userId: string) {
-    if (numbered.has(userId)) return;
+export async function ensureBillNumbers() {
+    if (numbered) return;
 
-    const missing = await Bill.find({ userId, number: { $exists: false } }, { _id: 1 }).sort({ createdAt: 1 }).lean();
+    const missing = await Bill.find({ number: { $exists: false } }, { _id: 1 }).sort({ createdAt: 1 }).lean();
     if (missing.length > 0) {
-        const top = await Bill.findOne({ userId, number: { $exists: true } }, { number: 1 }).sort({ number: -1 }).lean();
-        await Counter.updateOne({ userId, key: "bill" }, { $max: { seq: top?.number ?? 0 } }, { upsert: true });
-        const counter = await Counter.findOneAndUpdate({ userId, key: "bill" }, { $inc: { seq: missing.length } }, { returnDocument: "after" });
+        const top = await Bill.findOne({ number: { $exists: true } }, { number: 1 }).sort({ number: -1 }).lean();
+        await Counter.updateOne({ key: "bill" }, { $max: { seq: top?.number ?? 0 } }, { upsert: true });
+        const counter = await Counter.findOneAndUpdate({ key: "bill" }, { $inc: { seq: missing.length } }, { returnDocument: "after" });
         const first = (counter?.seq ?? missing.length) - missing.length + 1;
 
         await Bill.bulkWrite(
@@ -34,20 +34,19 @@ export async function ensureBillNumbers(userId: string) {
         );
     }
 
-    numbered.add(userId);
+    numbered = true;
 }
 
 // ─── Queries ──────────────────────────────────────────────
 export async function getBills() {
     await connectDB();
-    const userId = await getUserId();
-    await ensureBillNumbers(userId);
+    await ensureBillNumbers();
 
     const oneYearAgo = new Date();
     oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
 
     const bills = await Bill.find(
-        { userId, deletedAt: null, createdAt: { $gte: oneYearAgo } },
+        { deletedAt: null, createdAt: { $gte: oneYearAgo } },
         { number: 1, customerName: 1, phone: 1, total: 1, discount: 1, paid: 1, returns: 1, items: 1, createdAt: 1 },
     )
         .sort({ createdAt: -1 })
@@ -58,11 +57,10 @@ export async function getBills() {
 
 export async function getBill(id: string) {
     await connectDB();
-    const userId = await getUserId();
-    await ensureBillNumbers(userId);
+    await ensureBillNumbers();
     if (!isValidObjectId(id)) throw new AppError("Bill not found", 404);
 
-    const bill = await Bill.findOne({ _id: id, userId, deletedAt: null }).lean();
+    const bill = await Bill.findOne({ _id: id, deletedAt: null }).lean();
     if (!bill) throw new AppError("Bill not found", 404);
     return bill;
 }
@@ -70,10 +68,9 @@ export async function getBill(id: string) {
 /** Distinct representatives used in previous bills, most recent first. */
 export async function getRepresentatives() {
     await connectDB();
-    const userId = await getUserId();
 
     const rows = await Bill.aggregate<{ _id: string }>([
-        { $match: { userId, deletedAt: null, representative: { $nin: [null, ""] } } },
+        { $match: { deletedAt: null, representative: { $nin: [null, ""] } } },
         { $sort: { createdAt: -1 } },
         { $group: { _id: "$representative", last: { $first: "$createdAt" } } },
         { $sort: { last: -1 } },
@@ -96,11 +93,11 @@ function sumByProduct(items: TBillItem[]) {
  * Moves the stock from `oldItems` to `newItems` in one go: everything is validated first and
  * only then is the net difference per product written, so a failed validation never leaves
  * the stock half-changed.
- *   create  → applyStockChange(userId, [], items)
- *   delete  → applyStockChange(userId, items, [])
- *   update  → applyStockChange(userId, oldItems, newItems)
+ *   create  → applyStockChange([], items)
+ *   delete  → applyStockChange(items, [])
+ *   update  → applyStockChange(oldItems, newItems)
  */
-async function applyStockChange(userId: string, oldItems: TBillItem[], newItems: TBillItem[]) {
+async function applyStockChange(oldItems: TBillItem[], newItems: TBillItem[]) {
     const oldMap = sumByProduct(oldItems);
     const newMap = sumByProduct(newItems);
     const ids = [...new Set([...oldMap.keys(), ...newMap.keys()])];
@@ -108,7 +105,7 @@ async function applyStockChange(userId: string, oldItems: TBillItem[], newItems:
 
     if (ids.some((id) => !isValidObjectId(id))) throw new AppError("منتج غير صالح");
 
-    const products = await Product.find({ _id: { $in: ids }, userId }).lean();
+    const products = await Product.find({ _id: { $in: ids } }).lean();
     const productMap = new Map(products.map((p) => [p._id.toString(), p]));
 
     // Validate everything before any write
@@ -127,7 +124,7 @@ async function applyStockChange(userId: string, oldItems: TBillItem[], newItems:
     const ops = ids
         .map((id) => ({ id, delta: (oldMap.get(id) ?? 0) - (newMap.get(id) ?? 0) }))
         .filter(({ id, delta }) => delta !== 0 && productMap.has(id))
-        .map(({ id, delta }) => ({ updateOne: { filter: { _id: id, userId }, update: { $inc: { count: delta } } } }));
+        .map(({ id, delta }) => ({ updateOne: { filter: { _id: id }, update: { $inc: { count: delta } } } }));
 
     if (ops.length > 0) await Product.bulkWrite(ops);
 }
@@ -152,11 +149,11 @@ function netItems(items: TBillItem[], returns: TBillReturn[] = []): TBillItem[] 
 
 // ─── Normalisation ────────────────────────────────────────
 /** Builds the items to store, snapshotting the buy price of every stock product. */
-async function buildItems(userId: string, input: TBillInput["items"], previous: TBillItem[] = []): Promise<TBillItem[]> {
+async function buildItems(input: TBillInput["items"], previous: TBillItem[] = []): Promise<TBillItem[]> {
     const ids = [...new Set(input.map((i) => i.productId).filter((id): id is string => !!id))];
     if (ids.some((id) => !isValidObjectId(id))) throw new AppError("منتج غير صالح");
 
-    const products = ids.length ? await Product.find({ _id: { $in: ids }, userId }, { buyPrice: 1 }).lean() : [];
+    const products = ids.length ? await Product.find({ _id: { $in: ids } }, { buyPrice: 1 }).lean() : [];
     const buyPrices = new Map(products.map((p) => [p._id.toString(), p.buyPrice]));
     const previousBuyPrices = new Map(previous.filter((p) => p.productId && p.buyPrice !== undefined).map((p) => [p.productId!, p.buyPrice!]));
 
@@ -184,18 +181,18 @@ function calcMoney(data: TBillInput, items: TBillItem[]) {
 // ─── Mutations ────────────────────────────────────────────
 export async function createBill(body: unknown) {
     await connectDB();
-    const userId = await getUserId();
     const data = billInput.parse(body);
-    await ensureBillNumbers(userId);
+    await ensureBillNumbers();
 
-    const items = await buildItems(userId, data.items);
-    await applyStockChange(userId, [], items);
+    const items = await buildItems(data.items);
+    await applyStockChange([], items);
 
     try {
-        const number = await nextSequence(userId, "bill");
+        const number = await nextSequence("bill");
         const { total, discount, paid } = calcMoney(data, items);
+        // The customer is remembered, so he can be picked (with his phone and address) next time
+        await saveCustomer({ name: data.customerName, phone: data.phone, address: data.address }).catch(() => undefined);
         return await Bill.create({
-            userId,
             number,
             customerName: data.customerName,
             phone: data.phone,
@@ -210,23 +207,22 @@ export async function createBill(body: unknown) {
         });
     } catch (error) {
         // Put the stock back if the bill could not be saved
-        await applyStockChange(userId, items, []);
+        await applyStockChange(items, []);
         throw error;
     }
 }
 
 export async function updateBill(id: string, body: unknown) {
     await connectDB();
-    const userId = await getUserId();
     const data = billInput.parse(body);
     if (!isValidObjectId(id)) throw new AppError("Bill not found", 404);
 
-    const existingBill = await Bill.findOne({ _id: id, userId, deletedAt: null });
+    const existingBill = await Bill.findOne({ _id: id, deletedAt: null });
     if (!existingBill) throw new AppError("Bill not found", 404);
     if (existingBill.returns?.length) throw new AppError("لا يمكن تعديل فاتورة بها مرتجعات");
 
-    const items = await buildItems(userId, data.items, existingBill.items);
-    await applyStockChange(userId, existingBill.items, items);
+    const items = await buildItems(data.items, existingBill.items);
+    await applyStockChange(existingBill.items, items);
 
     const { total, discount, paid } = calcMoney(data, items);
     existingBill.customerName = data.customerName;
@@ -241,19 +237,19 @@ export async function updateBill(id: string, body: unknown) {
     existingBill.paid = paid;
 
     await existingBill.save();
+    await saveCustomer({ name: data.customerName, phone: data.phone, address: data.address }).catch(() => undefined);
     return existingBill;
 }
 
 /** Soft delete: the quantities go back to stock and the bill can be restored. */
 export async function deleteBill(id: string) {
     await connectDB();
-    const userId = await getUserId();
     if (!isValidObjectId(id)) throw new AppError("Bill not found", 404);
 
-    const bill = await Bill.findOne({ _id: id, userId, deletedAt: null });
+    const bill = await Bill.findOne({ _id: id, deletedAt: null });
     if (!bill) throw new AppError("Bill not found", 404);
 
-    await applyStockChange(userId, netItems(bill.items, bill.returns), []);
+    await applyStockChange(netItems(bill.items, bill.returns), []);
     bill.deletedAt = new Date();
     await bill.save();
 
@@ -262,13 +258,12 @@ export async function deleteBill(id: string) {
 
 export async function restoreBill(id: string) {
     await connectDB();
-    const userId = await getUserId();
     if (!isValidObjectId(id)) throw new AppError("Bill not found", 404);
 
-    const bill = await Bill.findOne({ _id: id, userId, deletedAt: { $ne: null } });
+    const bill = await Bill.findOne({ _id: id, deletedAt: { $ne: null } });
     if (!bill) throw new AppError("Bill not found", 404);
 
-    await applyStockChange(userId, [], netItems(bill.items, bill.returns));
+    await applyStockChange([], netItems(bill.items, bill.returns));
     bill.deletedAt = null;
     await bill.save();
 
@@ -277,11 +272,10 @@ export async function restoreBill(id: string) {
 
 export async function addPayment(id: string, body: unknown) {
     await connectDB();
-    const userId = await getUserId();
     const { amount } = paymentInput.parse(body);
     if (!isValidObjectId(id)) throw new AppError("Bill not found", 404);
 
-    const bill = await Bill.findOne({ _id: id, userId, deletedAt: null });
+    const bill = await Bill.findOne({ _id: id, deletedAt: null });
     if (!bill) throw new AppError("Bill not found", 404);
 
     const remaining = billRemaining(bill);
@@ -296,11 +290,10 @@ export async function addPayment(id: string, body: unknown) {
 /** The customer gives goods back: stock goes up and the bill (and what the customer owes) goes down. */
 export async function returnItems(id: string, body: unknown) {
     await connectDB();
-    const userId = await getUserId();
     const data = returnInput.parse(body);
     if (!isValidObjectId(id)) throw new AppError("Bill not found", 404);
 
-    const bill = await Bill.findOne({ _id: id, userId, deletedAt: null });
+    const bill = await Bill.findOne({ _id: id, deletedAt: null });
     if (!bill) throw new AppError("Bill not found", 404);
 
     // What can still be returned per product line
@@ -325,7 +318,7 @@ export async function returnItems(id: string, body: unknown) {
     const stockOps = (sign: 1 | -1) =>
         added
             .filter((r) => r.productId && isValidObjectId(r.productId))
-            .map((r) => ({ updateOne: { filter: { _id: r.productId, userId, deletedAt: null }, update: { $inc: { count: sign * r.count } } } }));
+            .map((r) => ({ updateOne: { filter: { _id: r.productId, deletedAt: null }, update: { $inc: { count: sign * r.count } } } }));
 
     const restore = stockOps(1);
     if (restore.length > 0) await Product.bulkWrite(restore);
@@ -346,10 +339,9 @@ export async function returnItems(id: string, body: unknown) {
 /** The customer pays a lump sum: it settles his unpaid bills, oldest first. */
 export async function collectFromCustomer(name: string, body: unknown) {
     await connectDB();
-    const userId = await getUserId();
     const { amount } = paymentInput.parse(body);
 
-    const bills = await Bill.find({ userId, deletedAt: null, $expr: { $eq: [{ $trim: { input: "$customerName" } }, name.trim()] } }).sort({ createdAt: 1 });
+    const bills = await Bill.find({ deletedAt: null, $expr: { $eq: [{ $trim: { input: "$customerName" } }, name.trim()] } }).sort({ createdAt: 1 });
     const open = bills.filter((bill) => billRemaining(bill) > 0);
     const owed = open.reduce((sum, bill) => sum + billRemaining(bill), 0);
     if (amount > owed) throw new AppError(`المبلغ أكبر من المديونية (${owed})`);

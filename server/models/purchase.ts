@@ -10,7 +10,6 @@ export type TPurchaseItem = {
 
 export type TPurchase = {
     _id: string;
-    userId: string;
     supplierName: string;
     phone?: string;
     items: TPurchaseItem[];
@@ -38,7 +37,6 @@ const itemSchema = new Schema<TPurchaseItem>(
 
 const purchaseSchema = new Schema<PurchaseDocument>(
     {
-        userId: { type: String, required: true, index: true },
         supplierName: { type: String, required: true, trim: true },
         phone: { type: String, trim: true },
         items: { type: [itemSchema], required: true },
@@ -51,6 +49,6 @@ const purchaseSchema = new Schema<PurchaseDocument>(
     { timestamps: true },
 );
 
-purchaseSchema.index({ userId: 1, createdAt: -1 });
+purchaseSchema.index({ createdAt: -1 });
 
 export const Purchase: Model<PurchaseDocument> = mongoose.models.Purchase || mongoose.model<PurchaseDocument>("Purchase", purchaseSchema);

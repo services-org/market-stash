@@ -1,27 +1,22 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
-const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)"]);
+import { AUTH_COOKIE, sessionToken } from "@/server/auth";
 
-export default clerkMiddleware(async (auth, request) => {
-    if (!isPublicRoute(request)) await auth.protect();
+/** Everything needs the PIN session except the sign-in page and its API. */
+export async function proxy(request: NextRequest) {
+    const { pathname } = request.nextUrl;
+    if (pathname === "/sign-in" || pathname === "/api/auth") return NextResponse.next();
 
-    // Add CORS headers, specifically for the allowed domain
-    const response = NextResponse.next();
-    const origin = request.headers.get("origin");
-    if (origin === "https://abo-roqia.vercel.app") {
-        response.headers.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-        response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
-        response.headers.set("Access-Control-Allow-Origin", origin);
-    }
-    return response;
-});
+    if (request.cookies.get(AUTH_COOKIE)?.value === (await sessionToken())) return NextResponse.next();
+
+    if (pathname.startsWith("/api/")) return NextResponse.json({ error: "غير مصرح" }, { status: 401 });
+
+    const url = new URL("/sign-in", request.url);
+    if (pathname !== "/") url.searchParams.set("next", pathname + request.nextUrl.search);
+    return NextResponse.redirect(url);
+}
 
 export const config = {
-    matcher: [
-        // Skip Next.js internals and all static files, unless found in search params
-        "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest|json)).*)",
-        // Always run for API routes
-        "/(api|trpc)(.*)",
-    ],
+    // Skip Next internals, the service worker, the manifest, the offline page and static files
+    matcher: ["/((?!_next/|images/|css/|sw\.js|manifest\.json|offline\.html|favicon\.ico).*)"],
 };

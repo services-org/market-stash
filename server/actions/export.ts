@@ -2,7 +2,6 @@ import { connectDB } from "@/server/config/database";
 import { Bill } from "@/server/models/bill";
 import { billNet, billPaid } from "@/lib/bill";
 import { Product } from "@/server/models/product";
-import { getUserId } from "@/server/actions/product";
 
 type Cell = string | number | null | undefined;
 
@@ -21,9 +20,8 @@ const formatDate = (date: Date) => new Date(date).toISOString().slice(0, 10);
 
 export async function exportProductsCsv() {
     await connectDB();
-    const userId = await getUserId();
 
-    const products = await Product.find({ userId, deletedAt: null }).sort({ company: 1, name: 1 }).lean();
+    const products = await Product.find({ deletedAt: null }).sort({ company: 1, name: 1 }).lean();
 
     return toCsv(
         ["الشركة", "المنتج", "الموقع", "الكمية", "سعر الشراء", "سعر البيع", "قيمة الشراء", "قيمة البيع", "الباركود", "الحد الأدنى"],
@@ -33,9 +31,8 @@ export async function exportProductsCsv() {
 
 export async function exportBillsCsv() {
     await connectDB();
-    const userId = await getUserId();
 
-    const bills = await Bill.find({ userId, deletedAt: null }).sort({ createdAt: -1 }).lean();
+    const bills = await Bill.find({ deletedAt: null }).sort({ createdAt: -1 }).lean();
 
     const rows: Cell[][] = [];
     for (const bill of bills) {

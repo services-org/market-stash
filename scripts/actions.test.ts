@@ -1,6 +1,6 @@
 // Temporary integration test for the server actions against the LOCAL database.
-// Uses a throw-away user id and removes everything it creates.
-import { afterAll, beforeAll, expect, mock, test } from "bun:test";
+// Runs in a throw-away database that is dropped at the end.
+import { afterAll, beforeAll, expect, test } from "bun:test";
 
 // Safety: this test writes (and deletes) data, so it refuses to run against anything but a local database.
 // bun loads .env first; override it explicitly:  DATABASE_URI=mongodb://127.0.0.1:27017/abo-roqia-store bun run test
@@ -9,8 +9,10 @@ if (!/^mongodb:\/\/(127\.0\.0\.1|localhost)[:/]/.test(dbUri)) {
     throw new Error("Refusing to run: DATABASE_URI must point to a local MongoDB (mongodb://127.0.0.1...)");
 }
 
-const USER = "test_user_integration_only";
-mock.module("@clerk/nextjs/server", () => ({ auth: async () => ({ userId: USER }) }));
+// A separate database, so the test never touches the local seed data either
+const TEST_URI = "mongodb://127.0.0.1:27017/abo-roqia-integration-test";
+process.env.DATABASE_URI = TEST_URI;
+process.env.DATABASE_URL = TEST_URI;
 
 const { connectDB } = await import("../server/config/database");
 const { Product } = await import("../server/models/product");
@@ -24,8 +26,6 @@ const analytics = await import("../server/actions/analytics");
 const purchasesApi = await import("../server/actions/purchase");
 const expensesApi = await import("../server/actions/expense");
 const reports = await import("../server/actions/report");
-const { Purchase } = await import("../server/models/purchase");
-const { Expense } = await import("../server/models/expense");
 
 async function fails(promise: Promise<unknown>, text = "") {
     let message: string | undefined;
@@ -39,11 +39,8 @@ async function fails(promise: Promise<unknown>, text = "") {
 }
 
 async function clean() {
-    await Product.deleteMany({ userId: USER });
-    await Bill.deleteMany({ userId: USER });
-    await Counter.deleteMany({ userId: USER });
-    await Purchase.deleteMany({ userId: USER });
-    await Expense.deleteMany({ userId: USER });
+    const { default: mongoose } = await import("mongoose");
+    await mongoose.connection.dropDatabase();
 }
 
 beforeAll(async () => {
@@ -54,6 +51,18 @@ beforeAll(async () => {
 afterAll(clean);
 
 const count = async (id: string) => (await Product.findById(id).lean())!.count;
+
+test("legacy bills (no number) get numbers, oldest first, continuing after the highest existing one", async () => {
+    const old = (name: string, date: string, extra = {}) => ({ customerName: name, items: [{ name: "x", count: 1, price: 10 }], total: 10, createdAt: new Date(date), updatedAt: new Date(), deletedAt: null, ...extra });
+    await Bill.collection.insertMany([old("ج", "2025-03-01"), old("أ", "2025-01-01"), old("ب", "2025-02-01"), old("موجود", "2025-04-01", { number: 7 })]);
+    await bills.ensureBillNumbers();
+    await bills.ensureBillNumbers(); // second call is a no-op
+    const numbered = await Bill.find({}).sort({ number: 1 }).lean();
+    expect(numbered.map((b) => [b.customerName, b.number])).toEqual([["موجود", 7], ["أ", 8], ["ب", 9], ["ج", 10]]);
+    expect((await Counter.findOne({ key: "bill" }).lean())!.seq).toBe(10);
+    await Bill.deleteMany({});
+    await Counter.deleteMany({});
+});
 
 test("full flow", async () => {
     const a = await prods.createProduct({ name: "A", company: "C", buyPrice: 10, sellPrice: 15, count: 10, location: "المحل", minStock: 5 });
@@ -86,7 +95,7 @@ test("full flow", async () => {
     // insufficient stock: nothing changes, no bill
     await fails(bills.createBill({ customerName: "x", items: [{ productId: A, name: "n", count: 7, price: 1, location: "المحل" }] }), "الكمية غير كافية");
     expect(await count(A)).toBe(6);
-    expect(await Bill.countDocuments({ userId: USER })).toBe(1);
+    expect(await Bill.countDocuments({})).toBe(1);
 
     // negative count rejected
     await fails(bills.createBill({ customerName: "x", items: [{ productId: A, name: "n", count: -3, price: 1, location: "المحل" }] }));
@@ -127,7 +136,7 @@ test("full flow", async () => {
     const list = await customers.getCustomers();
     expect(list[0]._id).toBe("عميل");
     expect(list[0].billsCount).toBe(1);
-    expect(list[0].phone === undefined || list[0].phone === null).toBe(true); // phone was dropped by the update (no phone sent)
+    expect(list[0].phone).toBe("01000000000"); // the customer was saved with his phone when the bill was created
     expect((await exp.exportBillsCsv()).startsWith("﻿")).toBe(true);
     expect((await exp.exportProductsCsv()).includes("C")).toBe(true);
     await analytics.getYearlyMonthlyProfits();
@@ -175,20 +184,6 @@ test("full flow", async () => {
     const after = sum(await analytics.getYearlyMonthlyProfits());
     expect(after.revenue - before.revenue).toBeCloseTo(200);
     expect(after.profit - before.profit).toBeCloseTo(10); // 5% of 200
-
-    // ── legacy bills (no number) get numbers, oldest first, continuing after the highest existing one ──
-    const OLD = "test_user_legacy_numbers";
-    const old = (name: string, date: string, extra = {}) => ({ userId: OLD, customerName: name, items: [{ name: "x", count: 1, price: 10 }], total: 10, createdAt: new Date(date), updatedAt: new Date(), deletedAt: null, ...extra });
-    await Bill.deleteMany({ userId: OLD });
-    await Counter.deleteMany({ userId: OLD });
-    await Bill.collection.insertMany([old("ج", "2025-03-01"), old("أ", "2025-01-01"), old("ب", "2025-02-01"), old("موجود", "2025-04-01", { number: 7 })]);
-    await bills.ensureBillNumbers(OLD);
-    await bills.ensureBillNumbers(OLD); // second call is a no-op
-    const numbered = await Bill.find({ userId: OLD }).sort({ number: 1 }).lean();
-    expect(numbered.map((b) => [b.customerName, b.number])).toEqual([["موجود", 7], ["أ", 8], ["ب", 9], ["ج", 10]]);
-    expect((await Counter.findOne({ userId: OLD, key: "bill" }).lean())!.seq).toBe(10);
-    await Bill.deleteMany({ userId: OLD });
-    await Counter.deleteMany({ userId: OLD });
 
     // ── returns ──
     const R = await prods.createProduct({ name: "R", company: "C", buyPrice: 10, sellPrice: 20, count: 10, location: "المحل" });
@@ -255,4 +250,21 @@ test("full flow", async () => {
     // ── profits count returns on the day they came back ──
     const rows = await analytics.getYearlyMonthlyProfits();
     expect(rows.length).toBeGreaterThan(0);
+
+    // ── customers are remembered: from a bill, and on their own ──
+    const { CustomerRecord } = await import("../server/models/customer");
+    await CustomerRecord.deleteMany({});
+    await bills.createBill({ customerName: " أحمد ", phone: "01011112222", address: "شارع ١", items: [{ name: "x", count: 1, price: 10 }] });
+    await customers.createCustomer({ name: "عميل بلا فواتير", phone: "01099998888" });
+    let all = await customers.getCustomers();
+    expect(all.find((c) => c._id === "أحمد")!.phone).toBe("01011112222");
+    const solo = all.find((c) => c._id === "عميل بلا فواتير")!;
+    expect([solo.billsCount, solo.phone]).toEqual([0, "01099998888"]);
+    // a later bill without phone keeps the saved one; a new phone replaces it
+    await bills.createBill({ customerName: "أحمد", items: [{ name: "x", count: 1, price: 10 }] });
+    expect((await CustomerRecord.findOne({ name: "أحمد" }).lean())!.phone).toBe("01011112222");
+    await bills.createBill({ customerName: "أحمد", phone: "01033334444", items: [{ name: "x", count: 1, price: 10 }] });
+    all = await customers.getCustomers();
+    expect(all.find((c) => c._id === "أحمد")!.phone).toBe("01033334444");
+    await CustomerRecord.deleteMany({});
 });

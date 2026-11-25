@@ -7,6 +7,6 @@ export async function GET() {
         return NextResponse.json(costs);
     } catch (error) {
         const message = error instanceof Error ? error.message : "Internal Server Error";
-        return NextResponse.json({ error: message }, { status: message === "Unauthorized" ? 401 : 500 });
+        return NextResponse.json({ error: message }, { status: 500 });
     }
 }

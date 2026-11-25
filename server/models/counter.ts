@@ -1,19 +1,18 @@
 import mongoose, { Model, Schema } from "mongoose";
 
-type TCounter = { userId: string; key: string; seq: number };
+type TCounter = { key: string; seq: number };
 
 const counterSchema = new Schema<TCounter>({
-    userId: { type: String, required: true },
     key: { type: String, required: true },
     seq: { type: Number, default: 0 },
 });
 
-counterSchema.index({ userId: 1, key: 1 }, { unique: true });
+counterSchema.index({ key: 1 }, { unique: true });
 
 export const Counter: Model<TCounter> = mongoose.models.Counter || mongoose.model<TCounter>("Counter", counterSchema);
 
-/** Atomically returns the next sequence number for the given user + key. */
-export async function nextSequence(userId: string, key: string) {
-    const doc = await Counter.findOneAndUpdate({ userId, key }, { $inc: { seq: 1 } }, { upsert: true, returnDocument: "after" });
+/** Atomically returns the next sequence number for the given key. */
+export async function nextSequence(key: string) {
+    const doc = await Counter.findOneAndUpdate({ key }, { $inc: { seq: 1 } }, { upsert: true, returnDocument: "after" });
     return doc.seq;
 }

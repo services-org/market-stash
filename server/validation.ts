@@ -65,6 +65,12 @@ export const transferInput = z.object({
     sellPrice: money.optional(),
 });
 
+export const customerInput = z.object({
+    name: z.string().trim().min(1, "اسم العميل مطلوب"),
+    phone: optionalText,
+    address: optionalText,
+});
+
 export const returnInput = z.object({
     items: z
         .array(
