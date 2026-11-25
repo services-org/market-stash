@@ -1,11 +1,11 @@
 "use client";
 import { useParams } from "next/navigation";
+import Image from "next/image";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatNumber } from "@/lib/utils";
 import { TBill } from "@/server/models/bill";
 import { useGet } from "@/hooks/api";
-import Image from "next/image";
 
 export default function PrintBillPage() {
     const { id } = useParams<{ id: string }>();
@@ -36,50 +36,66 @@ export default function PrintBillPage() {
         month: "long",
     });
 
+    const deliveryDate = bill.deliveryDate
+        ? new Date(bill.deliveryDate).toLocaleDateString("ar-EG", { year: "numeric", day: "numeric", month: "long" })
+        : "";
+
     return (
-        <div className="mx-auto p-5 text-foreground print:text-black not-print:max-w-3xl" dir="rtl">
+        <div className="mx-auto p-5 font-bold text-foreground print:text-black not-print:max-w-3xl" dir="rtl">
             {/* Header */}
-            <div className="mb-6 border-b-[3px] border-orange-500 pb-5 text-center">
-                <Image src="/images/logo.png" alt="logo" width={80} height={150} className="object-contain mx-auto block" />
-                <h1 className="mb-1 text-[22px] font-extrabold print:text-black">ابورقية للتجارة والتوزيع</h1>
-                <p className="text-xs leading-relaxed text-muted-foreground print:text-gray-500">الورديان - نهاية شارع الامير لؤلؤ - موقف المتراس</p>
+            <div className="mb-5 border-b-[3px] border-orange-500 pb-4 text-center">
+                <Image
+                    src="/images/banner.jpeg"
+                    alt="الراية للتجارة والتوزيع"
+                    width={1024}
+                    height={1024}
+                    priority
+                    className="mx-auto block h-44 w-auto object-contain"
+                />
+                <p className="mt-2 text-sm font-bold leading-relaxed text-muted-foreground print:text-black">
+                    الورديان - نهاية شارع الامير لؤلؤ - موقف المتراس
+                </p>
             </div>
 
             {/* Bill Meta */}
-            <div className="mb-5 flex justify-between rounded-lg border border-border/60 bg-muted/50 px-4 py-3 print:border-gray-200 print:bg-gray-50">
-                <div className="text-[13px]">
-                    <strong className="mb-0.5 block text-[11px] font-semibold text-muted-foreground print:text-black">العميل</strong>
-                    {bill.customerName}
-                </div>
-                <div className="text-[13px]">
-                    <strong className="mb-0.5 block text-[11px] font-semibold text-muted-foreground print:text-black">التاريخ</strong>
-                    {date}
-                </div>
+            <div className="mb-5 grid grid-cols-2 gap-x-6 gap-y-3 rounded-lg border border-border/60 bg-muted/50 px-4 py-3 print:border-gray-400 print:bg-gray-50">
+                {[
+                    { label: "العميل", value: bill.customerName },
+                    { label: "رقم الهاتف", value: bill.phone },
+                    { label: "العنوان", value: bill.address },
+                    { label: "تاريخ التسليم", value: deliveryDate },
+                    { label: "المندوب", value: bill.representative },
+                ].map(({ label, value }) => (
+                    <div key={label} className="flex items-baseline gap-2 text-base font-extrabold print:text-black">
+                        <span className="shrink-0 text-sm font-extrabold text-muted-foreground print:text-black">{label}:</span>
+                        <span className="min-h-6 flex-1 border-b border-dotted border-gray-400">{value}</span>
+                    </div>
+                ))}
             </div>
 
             {/* Items Table */}
             <table className="mb-5 w-full border-collapse">
                 <thead>
                     <tr>
-                        <th className="rounded-r-lg bg-orange-500 px-3 py-2.5 text-center text-xs font-bold text-white">#</th>
-                        <th className="bg-orange-500 px-3 py-2.5 text-right text-xs font-bold text-white">المنتج</th>
-                        <th className="bg-orange-500 px-3 py-2.5 text-center text-xs font-bold text-white">الكمية</th>
-                        <th className="bg-orange-500 px-3 py-2.5 text-center text-xs font-bold text-white">السعر</th>
-                        <th className="rounded-l-lg bg-orange-500 px-3 py-2.5 text-center text-xs font-bold text-white">المجموع</th>
+                        <th className="rounded-r-lg bg-orange-500 px-3 py-2.5 text-center text-sm font-extrabold text-white">#</th>
+                        <th className="bg-orange-500 px-3 py-2.5 text-right text-sm font-extrabold text-white">المنتج</th>
+                        <th className="bg-orange-500 px-3 py-2.5 text-center text-sm font-extrabold text-white">الكمية</th>
+                        <th className="bg-orange-500 px-3 py-2.5 text-center text-sm font-extrabold text-white">السعر</th>
+                        <th className="rounded-l-lg bg-orange-500 px-3 py-2.5 text-center text-sm font-extrabold text-white">المجموع</th>
                     </tr>
                 </thead>
                 <tbody>
                     {bill.items.map((item, i) => (
                         <tr key={i} className="even:bg-muted/30 print:even:bg-gray-100">
-                            <td className="border-b border-border/40 px-3 py-2.5 text-center font-mono text-[13px] print:border-gray-200">{i + 1}</td>
-                            <td className="border-b border-border/40 px-3 py-2.5 text-[13px] print:border-gray-200">{item.name}</td>
-                            <td className="border-b border-border/40 px-3 py-2.5 text-center font-mono text-[13px] print:border-gray-200">
+                            <td className="border-b border-border/40 px-3 py-2.5 text-center font-mono text-[15px] font-bold print:border-gray-200">{i + 1}</td>
+                            <td className="border-b border-border/40 px-3 py-2.5 text-[15px] font-bold print:border-gray-200">{item.name}</td>
+                            <td className="border-b border-border/40 px-3 py-2.5 text-center font-mono text-[15px] font-bold print:border-gray-200">
                                 {item.count}
                             </td>
-                            <td className="border-b border-border/40 px-3 py-2.5 text-center font-mono text-[13px] print:border-gray-200">
+                            <td className="border-b border-border/40 px-3 py-2.5 text-center font-mono text-[15px] font-bold print:border-gray-200">
                                 {formatNumber(item.price)}
                             </td>
-                            <td className="border-b border-border/40 px-3 py-2.5 text-center font-mono text-[13px] font-bold print:border-gray-200">
+                            <td className="border-b border-border/40 px-3 py-2.5 text-center font-mono text-[15px] font-bold print:border-gray-200">
                                 {formatNumber(item.price * item.count)}
                             </td>
                         </tr>

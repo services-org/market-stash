@@ -26,6 +26,10 @@ export function CreateBillDialog() {
         resolver: zodResolver(billSchema),
         defaultValues: {
             customerName: "",
+            phone: "",
+            address: "",
+            deliveryDate: "",
+            representative: "",
             items: [{ isFromDB: true, productId: "", name: "", location: "", count: 1, price: 0 }],
         },
     });
@@ -58,6 +62,10 @@ export function CreateBillDialog() {
     function onSubmit(data: TBillForm) {
         const payload = {
             customerName: data.customerName,
+            phone: data.phone,
+            address: data.address,
+            deliveryDate: data.deliveryDate,
+            representative: data.representative,
             items: data.items.map((item) => ({
                 ...(item.isFromDB && item.productId ? { productId: item.productId, location: item.location } : {}),
                 name: item.name,
@@ -93,6 +101,10 @@ export function CreateBillDialog() {
             <FormProvider {...form}>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     <Input name="customerName" label="اسم العميل" placeholder="اسم العميل" />
+                    <Input name="phone" type="tel" label="رقم الهاتف" />
+                    <Input name="address" label="العنوان" />
+                    <Input name="deliveryDate" type="date" label="تاريخ التسليم" />
+                    <Input name="representative" label="المندوب" />
 
                     <Separator />
 

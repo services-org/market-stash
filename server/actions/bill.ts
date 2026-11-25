@@ -72,6 +72,10 @@ async function restoreStock(userId: string, items: TBillItem[]) {
 // ─── Mutations ────────────────────────────────────────────
 type CreateBillInput = {
     customerName: string;
+    phone?: string;
+    address?: string;
+    deliveryDate?: string;
+    representative?: string;
     items: TBillItem[];
 };
 
@@ -99,6 +103,10 @@ export async function updateBill(id: string, data: CreateBillInput) {
 
     const total = data.items.reduce((sum, item) => sum + item.price * item.count, 0);
     existingBill.customerName = data.customerName;
+    existingBill.phone = data.phone;
+    existingBill.address = data.address;
+    existingBill.deliveryDate = data.deliveryDate;
+    existingBill.representative = data.representative;
     existingBill.items = data.items;
     existingBill.total = total;
 

@@ -4,7 +4,7 @@ import { Input as ShadInput } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 type TInput = {
-    type?: "string" | "number";
+    type?: "string" | "number" | "date" | "tel";
     placeholder?: string;
     label?: string;
     name: string;

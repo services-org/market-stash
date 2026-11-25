@@ -12,6 +12,10 @@ export type TBill = {
     _id: string;
     userId: string;
     customerName: string;
+    phone?: string;
+    address?: string;
+    deliveryDate?: string;
+    representative?: string;
     items: TBillItem[];
     total: number;
     createdAt: Date;
@@ -35,6 +39,10 @@ const billSchema = new Schema<BillDocument>(
     {
         userId: { type: String, required: true, index: true },
         customerName: { type: String, required: true, trim: true },
+        phone: { type: String, trim: true },
+        address: { type: String, trim: true },
+        deliveryDate: { type: String, trim: true },
+        representative: { type: String, trim: true },
         items: { type: [billItemSchema], required: true },
         total: { type: Number, required: true },
     },

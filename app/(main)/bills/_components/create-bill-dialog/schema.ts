@@ -11,6 +11,10 @@ export const billItemSchema = z.object({
 
 export const billSchema = z.object({
     customerName: z.string().min(1, "اسم العميل مطلوب"),
+    phone: z.string().optional(),
+    address: z.string().optional(),
+    deliveryDate: z.string().optional(),
+    representative: z.string().optional(),
     items: z.array(billItemSchema).min(1, "يجب إضافة منتج واحد على الأقل"),
 });
 

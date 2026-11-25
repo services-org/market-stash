@@ -68,6 +68,10 @@ export default function BillDetailPage() {
             <div className="space-y-4 p-4">
                 <div className="space-y-1">
                     <h2 className="text-base font-bold">{bill.customerName}</h2>
+                    {bill.phone && <p className="text-xs text-muted-foreground">الهاتف: {bill.phone}</p>}
+                    {bill.address && <p className="text-xs text-muted-foreground">العنوان: {bill.address}</p>}
+                    {bill.deliveryDate && <p className="text-xs text-muted-foreground">تاريخ التسليم: {bill.deliveryDate}</p>}
+                    {bill.representative && <p className="text-xs text-muted-foreground">المندوب: {bill.representative}</p>}
                     <p className="text-xs text-muted-foreground">{date}</p>
                 </div>
 
