@@ -182,7 +182,10 @@ export function InvoiceSheet({ bill }: Readonly<{ bill: TBill }>) {
                 <p className="text-[11px]" style={{ color: NAVY }}>
                     شكراً لتعاملكم معنا — الراية للتجارة والتوزيع
                 </p>
-                <span className="text-[8px]">الورديان - نهاية شارع الامير لؤلؤ - موقف المتراس</span>
+                <p className="text-[8px]">الورديان - نهاية شارع الامير لؤلؤ - موقف المتراس</p>
+                <p className="mt-1 text-[9px]">
+                    رقم الهاتف <span dir="ltr" className="inline-block font-mono">01121499779</span>
+                </p>
             </footer>
         </div>
     );
