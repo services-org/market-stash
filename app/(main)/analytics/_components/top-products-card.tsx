@@ -1,6 +1,7 @@
 "use client";
 
 import { useGet } from "@/hooks/api";
+import { formatNumber } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Package, Trophy } from "lucide-react";
 
@@ -69,7 +70,7 @@ export function TopProductsCard() {
                         </div>
 
                         <div className="text-left">
-                            <div className="font-mono font-bold text-sm sm:text-base text-emerald-500">{product.totalRevenue.toFixed(2)} ج.م</div>
+                            <div className="font-mono font-bold text-sm sm:text-base text-emerald-500">{formatNumber(product.totalRevenue)} ج.م</div>
                             <div className="text-[10px] text-muted-foreground mt-1">حجم المبيعات</div>
                         </div>
                     </div>

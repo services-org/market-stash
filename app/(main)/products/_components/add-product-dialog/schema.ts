@@ -7,6 +7,11 @@ export const addProductSchema = z.object({
     sellPrice: z.number().min(0, "سعر البيع يجب أن يكون 0 أو أكثر"),
     count: z.number().int().min(0, "الكمية يجب أن تكون 0 أو أكثر"),
     location: z.string().min(1, "الموقع مطلوب"),
+    barcode: z.string().optional(),
+    minStock: z
+        .string()
+        .optional()
+        .refine((v) => !v?.trim() || (Number.isInteger(Number(v)) && Number(v) >= 0), "أدخل رقماً صحيحاً (0 أو أكثر)"),
 });
 
 export type TAddProductForm = z.infer<typeof addProductSchema>;

@@ -2,11 +2,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, useWatch, FormProvider } from "react-hook-form";
 import { Plus, PenLine, List } from "lucide-react";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 import { addProductSchema, TAddProductForm } from "./schema";
 import { useCreate, useGet } from "@/hooks/api";
 import { LOCATIONS } from "@/lib/constants";
+import { parseMinStock } from "@/lib/stock";
+import { BarcodeScanButton } from "@/components/common/barcode-scanner";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Select } from "@/ui/select";
@@ -15,7 +17,7 @@ import { Input } from "@/ui/input";
 
 type TCompany = { _id: string; productCount: number; totalValue: number };
 
-export function AddProductDialog() {
+export function AddProductDialog({ trigger }: Readonly<{ trigger?: ReactNode }>) {
     const [isNewCompany, setIsNewCompany] = useState(false);
     const [open, setOpen] = useState(false);
 
@@ -25,16 +27,16 @@ export function AddProductDialog() {
 
     const form = useForm<TAddProductForm>({
         resolver: zodResolver(addProductSchema),
-        defaultValues: { name: "", company: "", buyPrice: 0, sellPrice: 0, count: 0, location: "" },
+        defaultValues: { name: "", company: "", buyPrice: 0, sellPrice: 0, count: 0, location: "", barcode: "", minStock: "" },
     });
 
-    const { handleSubmit, reset, setValue, control, formState } = form;
+    const { handleSubmit, reset, setValue, control } = form;
 
     const company = useWatch({ control, name: "company" });
     const location = useWatch({ control, name: "location" });
 
     const { mutate, isPending } = useCreate("/api/products", {
-        invalidateKeys: ["products", "locations", "companies"],
+        invalidateKeys: ["products", "locations", "companies", "analytics"],
         onSuccess: () => {
             setOpen(false);
             setIsNewCompany(false);
@@ -43,10 +45,8 @@ export function AddProductDialog() {
     });
 
     function onSubmit(data: TAddProductForm) {
-        mutate(data);
+        mutate({ ...data, barcode: data.barcode?.trim() || undefined, minStock: parseMinStock(data.minStock) });
     }
-
-    console.log(formState.errors);
 
     return (
         <Dialog
@@ -54,9 +54,11 @@ export function AddProductDialog() {
             title="إضافة منتج"
             open={open}
             trigger={
-                <Button size="icon" className="size-9 rounded-full shadow-md">
-                    <Plus className="size-4" />
-                </Button>
+                trigger ?? (
+                    <Button size="icon" aria-label="إضافة منتج" className="size-9 rounded-full shadow-md">
+                        <Plus className="size-4" />
+                    </Button>
+                )
             }
         >
             <FormProvider {...form}>
@@ -99,10 +101,22 @@ export function AddProductDialog() {
                     </div>
                     <Input name="name" label="اسم المنتج" placeholder="مثال: مقاس 1" />
                     <div className="grid grid-cols-2 gap-3">
-                        <Input name="buyPrice" type="number" label="سعر الشراء (ج.م)" placeholder="0.00" inputProps={{ min: "0", step: "0.01" }} />
-                        <Input name="sellPrice" type="number" label="سعر البيع (ج.م)" placeholder="0.00" inputProps={{ min: "0", step: "0.01" }} />
+                        <Input name="buyPrice" type="number" label="سعر الشراء (ج.م)" placeholder="0" inputProps={{ min: "0", step: "any" }} />
+                        <Input name="sellPrice" type="number" label="سعر البيع (ج.م)" placeholder="0" inputProps={{ min: "0", step: "any" }} />
                     </div>
                     <Input name="count" type="number" label="الكمية" placeholder="0" inputProps={{ min: "0" }} />
+                    <div className="grid grid-cols-2 gap-3">
+                        <Input name="minStock" label="تنبيه عند وصول الكمية إلى" placeholder="اختياري" inputProps={{ inputMode: "numeric" }} />
+                        <div className="space-y-2">
+                            <Label htmlFor="barcode">الباركود (اختياري)</Label>
+                            <div className="flex gap-2">
+                                <div className="flex-1">
+                                    <Input name="barcode" placeholder="الباركود" />
+                                </div>
+                                <BarcodeScanButton onScan={(code) => setValue("barcode", code)} className="mt-0 size-9 shrink-0" />
+                            </div>
+                        </div>
+                    </div>
                     <Select
                         name="location"
                         label="الموقع"

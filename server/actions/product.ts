@@ -1,6 +1,10 @@
 import { auth } from "@clerk/nextjs/server";
+import { isValidObjectId } from "mongoose";
+
 import { connectDB } from "@/server/config/database";
 import { Product } from "@/server/models/product";
+import { AppError } from "@/server/errors";
+import { productCreateInput, productUpdateInput, transferInput } from "@/server/validation";
 
 // ─── Helpers ──────────────────────────────────────────────
 export async function getUserId() {
@@ -9,12 +13,18 @@ export async function getUserId() {
     return userId;
 }
 
+function assertId(id: string) {
+    if (!isValidObjectId(id)) throw new AppError("Product not found", 404);
+}
+
+const isDuplicateKey = (error: unknown) => typeof error === "object" && error !== null && (error as { code?: number }).code === 11000;
+
 // ─── Queries ──────────────────────────────────────────────
 export async function getProducts(location?: string) {
     await connectDB();
     const userId = await getUserId();
 
-    const filter: Record<string, unknown> = { userId };
+    const filter: Record<string, unknown> = { userId, deletedAt: null };
     if (location) filter.location = location;
 
     const products = await Product.find(filter).sort({ createdAt: -1 }).lean();
@@ -26,7 +36,7 @@ export async function getCompanies() {
     const userId = await getUserId();
 
     const companies = await Product.aggregate([
-        { $match: { userId } },
+        { $match: { userId, deletedAt: null } },
         {
             $group: {
                 _id: "$company",
@@ -44,7 +54,7 @@ export async function getCompanyProducts(company: string) {
     await connectDB();
     const userId = await getUserId();
 
-    const products = await Product.find({ userId, company }).sort({ createdAt: -1 }).lean();
+    const products = await Product.find({ userId, company, deletedAt: null }).sort({ createdAt: -1 }).lean();
     return products;
 }
 
@@ -52,95 +62,142 @@ export async function getLocations() {
     await connectDB();
     const userId = await getUserId();
 
-    const locations = await Product.distinct("location", { userId });
+    const locations = await Product.distinct("location", { userId, deletedAt: null });
     return locations;
 }
 
+/** Products at or below their low-stock threshold (out-of-stock first). */
+export async function getLowStockProducts() {
+    await connectDB();
+    const userId = await getUserId();
+
+    const products = await Product.find({
+        userId,
+        deletedAt: null,
+        minStock: { $exists: true, $ne: null },
+        $expr: { $lte: ["$count", "$minStock"] },
+    })
+        .sort({ count: 1, company: 1, name: 1 })
+        .lean();
+
+    return products;
+}
+
 // ─── Mutations ────────────────────────────────────────────
-type CreateProductInput = {
-    name: string;
-    company: string;
-    buyPrice: number;
-    sellPrice: number;
-    count: number;
-    location: string;
-};
-
-export async function createProduct(data: CreateProductInput) {
+export async function createProduct(body: unknown) {
     await connectDB();
     const userId = await getUserId();
+    const data = productCreateInput.parse(body);
 
-    const product = await Product.create({ ...data, userId });
-    return product;
+    try {
+        return await Product.create({ ...data, userId });
+    } catch (error) {
+        if (isDuplicateKey(error)) throw new AppError("هذا المنتج موجود بالفعل في نفس الموقع");
+        throw error;
+    }
 }
 
-export async function updateProduct(id: string, data: { name?: string; buyPrice?: number; sellPrice?: number; count?: number }) {
+export async function updateProduct(id: string, body: unknown) {
     await connectDB();
     const userId = await getUserId();
+    assertId(id);
+    const { count, minStock, ...fields } = productUpdateInput.parse(body);
 
-    const { count, ...setFields } = data;
-    const updateQuery = count !== undefined ? { $set: setFields, $inc: { count } } : { $set: setFields };
+    const setFields: Record<string, unknown> = Object.fromEntries(Object.entries(fields).filter(([, value]) => value !== undefined));
+    if (typeof minStock === "number") setFields.minStock = minStock;
 
-    const product = await Product.findOneAndUpdate({ _id: id, userId }, updateQuery, { new: true }).lean();
-    if (!product) throw new Error("Product not found");
-    return product;
+    const update: Record<string, unknown> = {};
+    if (Object.keys(setFields).length > 0) update.$set = setFields;
+    // `minStock: null` switches low-stock tracking off for the product
+    if (minStock === null) update.$unset = { minStock: "" };
+    if (count) update.$inc = { count };
+    if (Object.keys(update).length === 0) {
+        const existing = await Product.findOne({ _id: id, userId, deletedAt: null }).lean();
+        if (!existing) throw new AppError("Product not found", 404);
+        return existing;
+    }
+
+    // A negative delta must never take the quantity below zero
+    const filter: Record<string, unknown> = { _id: id, userId, deletedAt: null };
+    if (count && count < 0) filter.count = { $gte: -count };
+
+    try {
+        const product = await Product.findOneAndUpdate(filter, update, { returnDocument: "after" }).lean();
+        if (product) return product;
+    } catch (error) {
+        if (isDuplicateKey(error)) throw new AppError("هذا المنتج موجود بالفعل في نفس الموقع");
+        throw error;
+    }
+
+    const exists = await Product.exists({ _id: id, userId, deletedAt: null });
+    if (!exists) throw new AppError("Product not found", 404);
+    throw new AppError("لا يمكن أن تكون الكمية النهائية أقل من 0");
 }
 
+/** Soft delete: the product can be restored with `restoreProduct`. */
 export async function deleteProduct(id: string) {
     await connectDB();
     const userId = await getUserId();
+    assertId(id);
 
-    const product = await Product.findOneAndDelete({ _id: id, userId });
-    if (!product) throw new Error("Product not found");
+    const product = await Product.findOneAndUpdate({ _id: id, userId, deletedAt: null }, { $set: { deletedAt: new Date() } }, { returnDocument: "after" });
+    if (!product) throw new AppError("Product not found", 404);
     return product;
 }
 
-export async function transferProduct(id: string, toLocation: string, count: number, sellPrice?: number) {
+export async function restoreProduct(id: string) {
     await connectDB();
     const userId = await getUserId();
+    assertId(id);
 
-    const sourceProduct = await Product.findOne({ _id: id, userId });
-    if (!sourceProduct) throw new Error("Source product not found");
+    try {
+        const product = await Product.findOneAndUpdate({ _id: id, userId, deletedAt: { $ne: null } }, { $set: { deletedAt: null } }, { returnDocument: "after" });
+        if (!product) throw new AppError("Product not found", 404);
+        return product;
+    } catch (error) {
+        if (isDuplicateKey(error)) throw new AppError("يوجد منتج بنفس الاسم والموقع، لا يمكن الاسترجاع");
+        throw error;
+    }
+}
 
-    if (sourceProduct.count < count) throw new Error("Insufficient quantity in source location");
-    if (count <= 0) throw new Error("Count must be greater than zero");
-    if (sourceProduct.location === toLocation) throw new Error("Source and target locations must be different");
+export async function transferProduct(id: string, body: unknown) {
+    await connectDB();
+    const userId = await getUserId();
+    assertId(id);
+    const { toLocation, count, sellPrice } = transferInput.parse(body);
 
-    // Start a transaction if replica set is running, but mongoose `.session()` can be complex for simple setups.
-    // We'll proceed with sequential updates.
+    const source = await Product.findOne({ _id: id, userId, deletedAt: null }).lean();
+    if (!source) throw new AppError("Product not found", 404);
+    if (source.location === toLocation) throw new AppError("يجب أن يكون الموقع الجديد مختلفاً عن الموقع الحالي");
 
-    // 1. Decrement source product
-    sourceProduct.count -= count;
-    await sourceProduct.save();
+    // 1. Take the quantity from the source (only if it is still available)
+    const updatedSource = await Product.findOneAndUpdate({ _id: id, userId, deletedAt: null, count: { $gte: count } }, { $inc: { count: -count } }, { returnDocument: "after" });
+    if (!updatedSource) throw new AppError(`الكمية غير كافية (المتاح: ${source.count})`);
 
-    // 2. Find or Create target product
-    const existingTargetProduct = await Product.findOne({
-        userId,
-        company: sourceProduct.company,
-        name: sourceProduct.name,
-        location: toLocation,
-    });
-
-    if (existingTargetProduct) {
-        // Update existing Target
-        existingTargetProduct.count += count;
-        if (sellPrice !== undefined) {
-            existingTargetProduct.sellPrice = sellPrice;
-        }
-        await existingTargetProduct.save();
-        return { source: sourceProduct, target: existingTargetProduct };
-    } else {
-        // Create new Target
-        const newProductData = {
-            userId,
-            company: sourceProduct.company,
-            name: sourceProduct.name,
-            buyPrice: sourceProduct.buyPrice,
-            sellPrice: sellPrice ?? sourceProduct.sellPrice,
-            count: count,
-            location: toLocation,
+    // 2. Add it to the target (created on the fly when it does not exist yet)
+    try {
+        const update: Record<string, unknown> = {
+            $inc: { count },
+            $setOnInsert: Object.fromEntries(
+                Object.entries({
+                    buyPrice: source.buyPrice,
+                    barcode: source.barcode,
+                    minStock: source.minStock,
+                    sellPrice: sellPrice === undefined ? source.sellPrice : undefined,
+                }).filter(([, value]) => value !== undefined),
+            ),
         };
-        const newTargetProduct = await Product.create(newProductData);
-        return { source: sourceProduct, target: newTargetProduct };
+        if (sellPrice !== undefined) update.$set = { sellPrice };
+
+        const target = await Product.findOneAndUpdate(
+            { userId, company: source.company, name: source.name, location: toLocation, deletedAt: null },
+            update,
+            { upsert: true, returnDocument: "after" },
+        );
+        return { source: updatedSource, target };
+    } catch (error) {
+        // Put the quantity back so nothing gets lost
+        await Product.updateOne({ _id: id, userId }, { $inc: { count } });
+        throw error;
     }
 }

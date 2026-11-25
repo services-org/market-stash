@@ -1,7 +1,8 @@
 "use client";
-import { use, useMemo } from "react";
+import { use, useMemo, useState } from "react";
 
-import { PageHeader, EmptyState } from "@/components/common";
+import { PageHeader, EmptyState, SearchInput } from "@/components/common";
+import { matchesSearch } from "@/lib/utils";
 import { CompanyProductCard } from "./_components";
 import { Skeleton } from "@/components/ui/skeleton";
 import { TProduct } from "@/server/models/product";
@@ -15,19 +16,25 @@ export default function CompanyDetailPage({ params }: Readonly<Params>) {
 
     const { data: products = [], isPending } = useGet<TProduct[]>(`/api/companies/${company}`, { queryKey: ["company-products", company] });
 
+    const [query, setQuery] = useState("");
+
     const grouped = useMemo(() => {
         const map = new Map<string, TProduct[]>();
-        for (const p of products) {
+        for (const p of products.filter((p) => matchesSearch(query, p.name, p.location, p.barcode))) {
             const list = map.get(p.location) ?? [];
             list.push(p);
             map.set(p.location, list);
         }
         return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b));
-    }, [products]);
+    }, [products, query]);
 
     return (
         <>
-            <PageHeader title={decodedCompany} subtitle={`${products.length} منتج`} backHref="/companies" />
+            <PageHeader title={decodedCompany} subtitle={`${products.length} منتج`} backHref="/companies">
+                <div className="px-4 pb-3">
+                    <SearchInput value={query} onChange={setQuery} placeholder="ابحث في منتجات الشركة" />
+                </div>
+            </PageHeader>
 
             <div className="p-4">
                 {isPending ? (
@@ -36,8 +43,8 @@ export default function CompanyDetailPage({ params }: Readonly<Params>) {
                             <Skeleton key={i} className="h-28 w-full rounded-xl" />
                         ))}
                     </div>
-                ) : products.length === 0 ? (
-                    <EmptyState message="لا توجد منتجات لهذه الشركة." />
+                ) : grouped.length === 0 ? (
+                    <EmptyState message={products.length === 0 ? "لا توجد منتجات لهذه الشركة." : "لا توجد منتجات مطابقة للبحث."} />
                 ) : (
                     <div className="space-y-5">
                         {grouped.map(([location, items]) => (

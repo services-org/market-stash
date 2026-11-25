@@ -8,11 +8,14 @@ type TInput = {
     placeholder?: string;
     label?: string;
     name: string;
+    /** Suggestions shown while typing (native datalist). The field stays free text. */
+    suggestions?: string[];
     inputProps?: Record<string, unknown>;
 };
 
-export const Input = ({ type, name, label, placeholder, inputProps }: TInput) => {
+export const Input = ({ type, name, label, placeholder, suggestions, inputProps }: TInput) => {
     const form = useFormContext();
+    const listId = suggestions?.length ? `${name}-suggestions` : undefined;
 
     return (
         <div className="space-y-2">
@@ -24,7 +27,17 @@ export const Input = ({ type, name, label, placeholder, inputProps }: TInput) =>
                 placeholder={placeholder ?? label}
                 type={type}
                 id={name}
+                list={listId}
+                autoComplete={listId ? "off" : undefined}
             />
+
+            {listId && (
+                <datalist id={listId}>
+                    {suggestions?.map((s) => (
+                        <option key={s} value={s} />
+                    ))}
+                </datalist>
+            )}
 
             {form.formState.errors[name]?.message && (
                 <p className="text-sm font-medium text-destructive">{form.formState.errors[name]?.message as string}</p>

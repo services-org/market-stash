@@ -6,7 +6,11 @@
         "dev": "rm -rf .next && next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "eslint"
+        "lint": "eslint",
+        "backup": "bun scripts/backup.mjs",
+        "db:backfill": "bun scripts/backfill.mjs",
+        "db:seed": "bun scripts/seed-local.mjs",
+        "test": "DATABASE_URI=mongodb://127.0.0.1:27017/abo-roqia-store DATABASE_URL=mongodb://127.0.0.1:27017/abo-roqia-store bun test scripts --timeout 60000"
     },
     "dependencies": {
         "@clerk/nextjs": "^6.38.2",
@@ -15,6 +19,8 @@
         "@types/lodash": "^4.17.24",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
+        "html2canvas-pro": "^2.6.4",
+        "jspdf": "^4.2.1",
         "lodash": "^4.17.23",
         "lucide-react": "^0.575.0",
         "mongoose": "^9.2.2",

@@ -1,6 +1,7 @@
 import { Trash2, Database, PenLine } from "lucide-react";
 import { UseFormSetValue } from "react-hook-form";
 
+import { ProductPicker } from "@/components/common/product-picker";
 import { TProduct } from "@/server/models/product";
 import { Button } from "@/components/ui/button";
 import { LOCATIONS } from "@/lib/constants";
@@ -19,6 +20,8 @@ type BillItemFormProps = {
 };
 
 export function BillItemForm({ index, item, canRemove, setValue, onRemove, onProductSelect, getFilteredProducts }: BillItemFormProps) {
+    const selectedProduct = getFilteredProducts("").find((p) => p._id === item.productId);
+
     return (
         <div className="space-y-2 rounded-lg border border-border/60 p-3">
             <div className="flex items-center justify-between">
@@ -26,7 +29,7 @@ export function BillItemForm({ index, item, canRemove, setValue, onRemove, onPro
                     type="button"
                     variant="ghost"
                     size="sm"
-                    className="h-6 gap-1 px-2 text-xs text-muted-foreground"
+                    className="h-7 gap-1 px-2 text-xs text-muted-foreground"
                     onClick={() => {
                         setValue(`items.${index}.isFromDB`, !item.isFromDB);
                         setValue(`items.${index}.productId`, "");
@@ -46,18 +49,18 @@ export function BillItemForm({ index, item, canRemove, setValue, onRemove, onPro
                     )}
                 </Button>
                 {canRemove && (
-                    <Button type="button" variant="ghost" size="icon" className="size-6 text-destructive" onClick={onRemove}>
-                        <Trash2 className="size-3" />
+                    <Button type="button" variant="ghost" size="icon" aria-label="حذف الصنف" className="size-8 text-destructive" onClick={onRemove}>
+                        <Trash2 className="size-3.5" />
                     </Button>
                 )}
             </div>
 
             {item.isFromDB ? (
-                <div className="flex items-center justify-between gap-3">
+                <div className="space-y-2">
                     <Select
                         name={`items.${index}.location`}
                         items={LOCATIONS.map((loc) => ({ value: loc, label: loc }))}
-                        placeholder="اختر الموقع"
+                        placeholder="كل المواقع"
                         value={item.location}
                         onValueChange={(v) => {
                             setValue(`items.${index}.productId`, "");
@@ -66,18 +69,16 @@ export function BillItemForm({ index, item, canRemove, setValue, onRemove, onPro
                             setValue(`items.${index}.price`, 0);
                         }}
                     />
-                    <Select
-                        onValueChange={(v) => onProductSelect(index, v)}
-                        name={`items.${index}.productId`}
-                        placeholder="اختر المنتج"
-                        disabled={!item.location}
+                    <ProductPicker
+                        products={getFilteredProducts(item.location)}
                         value={item.productId}
-                        items={getFilteredProducts(item.location).map((p) => ({
-                            value: p._id,
-                            label: `${p.company} - ${p.name} (متاح: ${p.count})`,
-                            disabled: p.count <= 0,
-                        }))}
+                        onSelect={(product) => onProductSelect(index, product._id)}
                     />
+                    {selectedProduct && (
+                        <p className="text-xs text-muted-foreground">
+                            المتاح في {selectedProduct.location}: <span className="font-semibold text-foreground">{selectedProduct.count}</span>
+                        </p>
+                    )}
                 </div>
             ) : (
                 <Input name={`items.${index}.name`} placeholder="اسم المنتج" />

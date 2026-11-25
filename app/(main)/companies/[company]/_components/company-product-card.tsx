@@ -7,6 +7,7 @@ import { ConfirmDialog } from "@/components/common";
 import { TProduct } from "@/server/models/product";
 import { Badge } from "@/components/ui/badge";
 import { formatNumber } from "@/lib/utils";
+import { isLowStock } from "@/lib/stock";
 import { useState, useRef, useEffect } from "react";
 import { useDelete, useUpdate } from "@/hooks/api";
 import { Card } from "@/ui/card";
@@ -18,11 +19,12 @@ export function CompanyProductCard({ product }: Readonly<{ product: TProduct }>)
     const inputRef = useRef<HTMLInputElement>(null);
 
     const { mutate: deleteProduct, isPending: isDeleting } = useDelete(`/api/products/${product._id}`, {
-        invalidateKeys: ["products", "companies", "company-products", "locations"],
+        invalidateKeys: ["products", "companies", "company-products", "locations", "analytics"],
+        undo: { url: `/api/products/${product._id}/restore`, message: "تم حذف المنتج" },
     });
 
     const { mutate: updateProduct, isPending: isUpdating } = useUpdate(`/api/products/${product._id}`, {
-        invalidateKeys: ["products", "companies", "company-products", "locations"],
+        invalidateKeys: ["products", "companies", "company-products", "locations", "analytics"],
         onSuccess: () => setIsEditing(false),
     });
 
@@ -85,14 +87,17 @@ export function CompanyProductCard({ product }: Readonly<{ product: TProduct }>)
                     <EditProductDialog product={product} />
                     <ConfirmDialog
                         trigger={
-                            <button className="inline-flex size-8 items-center justify-center rounded-md text-destructive hover:bg-accent hover:text-destructive">
-                                <Trash2 className="size-3.5" />
+                            <button
+                                aria-label="حذف المنتج"
+                                className="inline-flex size-9 items-center justify-center rounded-md text-destructive hover:bg-accent hover:text-destructive"
+                            >
+                                <Trash2 className="size-4" />
                             </button>
                         }
                         title="حذف المنتج"
                         description={
                             <>
-                                هل أنت متأكد من حذف <strong>{product.name}</strong>؟ لا يمكن التراجع عن هذا الإجراء.
+                                هل أنت متأكد من حذف <strong>{product.name}</strong>؟ يمكنك التراجع بعد الحذف.
                             </>
                         }
                         onConfirm={deleteProduct}
@@ -110,6 +115,13 @@ export function CompanyProductCard({ product }: Readonly<{ product: TProduct }>)
                 <span className="text-xs text-muted-foreground">
                     الكمية: <span className="font-semibold text-foreground">{product.count}</span>
                 </span>
+                {product.count <= 0 ? (
+                    <Badge variant="destructive" className="text-xs">
+                        نفذ
+                    </Badge>
+                ) : isLowStock(product) ? (
+                    <Badge className="bg-amber-500/15 text-xs text-amber-500">مخزون منخفض</Badge>
+                ) : null}
             </div>
         </Card>
     );

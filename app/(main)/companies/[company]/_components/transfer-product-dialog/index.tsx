@@ -17,7 +17,7 @@ export function TransferProductDialog({ product }: Readonly<{ product: TProduct 
     const [open, setOpen] = useState(false);
 
     const { mutate, isPending } = useCreate(`/api/products/${product._id}/transfer`, {
-        invalidateKeys: ["products", "companies", "company-products", "locations"],
+        invalidateKeys: ["products", "companies", "company-products", "locations", "analytics"],
         onSuccess: () => setOpen(false),
     });
 
@@ -48,9 +48,10 @@ export function TransferProductDialog({ product }: Readonly<{ product: TProduct 
             trigger={
                 <button
                     type="button"
-                    className="inline-flex size-8 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground text-primary/80 transition-colors"
+                    aria-label="نقل المنتج"
+                    className="inline-flex size-9 items-center justify-center rounded-md hover:bg-accent hover:text-accent-foreground text-primary/80 transition-colors"
                 >
-                    <ArrowRightLeft className="size-3.5" />
+                    <ArrowRightLeft className="size-4" />
                 </button>
             }
         >
@@ -75,7 +76,7 @@ export function TransferProductDialog({ product }: Readonly<{ product: TProduct 
                         type="number"
                         label="سعر البيع الجديد في الموقع (ج.م)"
                         placeholder="أدخل سعر البيع"
-                        inputProps={{ min: 0, step: "0.01", disabled: isPending }}
+                        inputProps={{ min: 0, step: "any", disabled: isPending }}
                     />
 
                     <div className="flex justify-end gap-2 pt-2">

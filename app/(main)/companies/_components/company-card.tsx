@@ -21,11 +21,11 @@ export function CompanyCard({ company }: { company: TCompany }) {
             <h3 className="mt-2 truncate text-[13px] font-bold">{company._id}</h3>
 
             <div className="mt-2.5 flex items-center justify-between border-t border-border/40 pt-2.5">
-                <div className="flex items-center gap-1 text-[11px] text-muted-foreground">
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
                     <Package className="size-3" />
                     <span>{company.productCount} منتج</span>
                 </div>
-                <span className="rounded-lg bg-muted px-2 py-1 text-[11px] font-bold">${formatNumber(company.totalValue)}</span>
+                <span className="rounded-lg bg-muted px-2 py-1 text-xs font-bold">{formatNumber(company.totalValue)} ج.م</span>
             </div>
         </Link>
     );

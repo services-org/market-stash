@@ -1,4 +1,5 @@
 "use client";
+import { formatNumber } from "@/lib/utils";
 import { TrendingDown, TrendingUp, Calendar, CalendarDays, Clock, LucideIcon } from "lucide-react";
 import { useMemo } from "react";
 
@@ -51,13 +52,13 @@ export function ProfitItem({ data, type }: ProfitItemProps) {
                         <p className="text-xs text-muted-foreground flex items-center gap-1">
                             <TrendingDown className="size-3 text-destructive" /> إجمالي التكلفة
                         </p>
-                        <p className="text-lg font-mono font-semibold">{data.totalCost.toFixed(2)}</p>
+                        <p className="text-lg font-mono font-semibold">{formatNumber(data.totalCost)}</p>
                     </div>
                     <div className="space-y-1">
                         <p className="text-xs text-muted-foreground flex items-center gap-1">
                             <TrendingUp className="size-3 text-emerald-500" /> إجمالي الإيرادات
                         </p>
-                        <p className="text-lg font-mono font-semibold">{data.totalRevenue.toFixed(2)}</p>
+                        <p className="text-lg font-mono font-semibold">{formatNumber(data.totalRevenue)}</p>
                     </div>
                 </div>
 
@@ -73,7 +74,7 @@ export function ProfitItem({ data, type }: ProfitItemProps) {
                     </div>
                     <p className={`text-xl font-mono font-bold ${data.profit >= 0 ? "text-emerald-500" : "text-destructive"}`}>
                         {data.profit > 0 ? "+" : ""}
-                        {data.profit.toFixed(2)} ج.م
+                        {formatNumber(data.profit)} ج.م
                     </p>
                 </div>
             </div>

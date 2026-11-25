@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getProducts, getLocations, createProduct } from "@/server/actions/product";
+
+import { getProducts, getLocations, getLowStockProducts, createProduct } from "@/server/actions/product";
+import { errorResponse } from "@/server/errors";
 
 export async function GET(req: NextRequest) {
     try {
@@ -7,26 +9,20 @@ export async function GET(req: NextRequest) {
         const location = searchParams.get("location") ?? undefined;
         const type = searchParams.get("type");
 
-        if (type === "locations") {
-            const locations = await getLocations();
-            return NextResponse.json(locations);
-        }
+        if (type === "locations") return NextResponse.json(await getLocations());
+        if (type === "low-stock") return NextResponse.json(await getLowStockProducts());
 
-        const products = await getProducts(location);
-        return NextResponse.json(products);
+        return NextResponse.json(await getProducts(location));
     } catch (error) {
-        const message = error instanceof Error ? error.message : "Internal Server Error";
-        return NextResponse.json({ error: message }, { status: message === "Unauthorized" ? 401 : 500 });
+        return errorResponse(error);
     }
 }
 
 export async function POST(req: NextRequest) {
     try {
-        const body = await req.json();
-        const product = await createProduct(body);
+        const product = await createProduct(await req.json());
         return NextResponse.json(product, { status: 201 });
     } catch (error) {
-        const message = error instanceof Error ? error.message : "Internal Server Error";
-        return NextResponse.json({ error: message }, { status: message === "Unauthorized" ? 401 : 500 });
+        return errorResponse(error);
     }
 }

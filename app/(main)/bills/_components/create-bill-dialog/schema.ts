@@ -9,12 +9,20 @@ export const billItemSchema = z.object({
     location: z.string(),
 });
 
+const amount = z
+    .string()
+    .optional()
+    .refine((v) => !v || (!Number.isNaN(Number(v)) && Number(v) >= 0), "قيمة غير صالحة");
+
 export const billSchema = z.object({
     customerName: z.string().min(1, "اسم العميل مطلوب"),
     phone: z.string().optional(),
     address: z.string().optional(),
     deliveryDate: z.string().optional(),
     representative: z.string().optional(),
+    notes: z.string().optional(),
+    discount: amount,
+    paid: amount,
     items: z.array(billItemSchema).min(1, "يجب إضافة منتج واحد على الأقل"),
 });
 

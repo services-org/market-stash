@@ -1,15 +1,16 @@
-import { auth } from "@clerk/nextjs/server";
+import { getUserId } from "@/server/actions/product";
 import { connectDB } from "@/server/config/database";
 import { Product } from "@/server/models/product";
 import { Bill } from "@/server/models/bill";
+import { DEFAULT_PROFIT_RATE, SHOP_TIMEZONE } from "@/lib/constants";
+import { Types } from "mongoose";
 
 export async function getLocationCosts() {
     await connectDB();
-    const { userId } = await auth();
-    if (!userId) throw new Error("Unauthorized");
+    const userId = await getUserId();
 
     const costs = await Product.aggregate([
-        { $match: { userId } },
+        { $match: { userId, deletedAt: null } },
         {
             $group: {
                 _id: "$location",
@@ -26,8 +27,7 @@ export async function getLocationCosts() {
 
 export async function getTopSoldProducts() {
     await connectDB();
-    const { userId } = await auth();
-    if (!userId) throw new Error("Unauthorized");
+    const userId = await getUserId();
 
     const thirtyDaysAgo = new Date();
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
@@ -36,6 +36,7 @@ export async function getTopSoldProducts() {
         {
             $match: {
                 userId,
+                deletedAt: null,
                 createdAt: { $gte: thirtyDaysAgo },
             },
         },
@@ -65,17 +66,48 @@ export async function getTopSoldProducts() {
 
 export async function getYearlyMonthlyProfits() {
     await connectDB();
-    const { userId } = await auth();
-    if (!userId) throw new Error("Unauthorized");
+    const userId = await getUserId();
 
     const profits = await Bill.aggregate([
-        { $match: { userId } },
-        { $unwind: "$items" },
-        // Lookup the current buyPrice from the Product collection
+        { $match: { userId, deletedAt: null } },
+        // Spread the bill discount over its items so revenue is the real amount charged
+        {
+            $addFields: {
+                ratio: {
+                    $cond: [{ $gt: ["$total", 0] }, { $divide: [{ $max: [0, { $subtract: ["$total", { $ifNull: ["$discount", 0] }] }] }, "$total"] }, 1],
+                },
+            },
+        },
+        // Sold items count +, returned items count - (on the day they came back)
+        {
+            $addFields: {
+                lines: {
+                    $concatArrays: [
+                        {
+                            $map: {
+                                input: "$items",
+                                as: "i",
+                                in: { productId: "$$i.productId", count: "$$i.count", price: "$$i.price", buyPrice: "$$i.buyPrice", at: "$createdAt" },
+                            },
+                        },
+                        {
+                            $map: {
+                                input: { $ifNull: ["$returns", []] },
+                                as: "r",
+                                in: { productId: "$$r.productId", count: { $multiply: ["$$r.count", -1] }, price: "$$r.price", buyPrice: "$$r.buyPrice", at: "$$r.at" },
+                            },
+                        },
+                    ],
+                },
+            },
+        },
+        { $unwind: "$lines" },
+        // Legacy bills have no buyPrice snapshot on their items: fall back to the product's current buyPrice
         {
             $lookup: {
                 from: "products",
-                let: { productId: { $toObjectId: "$items.productId" } },
+                // Items typed straight into a bill have no (or an empty) productId: don't fail on them
+                let: { productId: { $convert: { input: "$lines.productId", to: "objectId", onError: null, onNull: null } } },
                 pipeline: [{ $match: { $expr: { $eq: ["$_id", "$$productId"] } } }, { $project: { buyPrice: 1 } }],
                 as: "productDetails",
             },
@@ -85,17 +117,29 @@ export async function getYearlyMonthlyProfits() {
                 product: { $arrayElemAt: ["$productDetails", 0] },
             },
         },
+        // The known buy price: the snapshot on the item, else the product's current one. 0 / missing = unknown
+        {
+            $addFields: {
+                knownBuyPrice: { $ifNull: ["$lines.buyPrice", { $ifNull: ["$product.buyPrice", 0] }] },
+                lineRevenue: { $multiply: ["$lines.count", "$lines.price", "$ratio"] },
+            },
+        },
         {
             $group: {
                 _id: {
-                    year: { $year: "$createdAt" },
-                    month: { $month: "$createdAt" },
-                    day: { $dayOfMonth: "$createdAt" },
+                    year: { $year: { date: "$lines.at", timezone: SHOP_TIMEZONE } },
+                    month: { $month: { date: "$lines.at", timezone: SHOP_TIMEZONE } },
+                    day: { $dayOfMonth: { date: "$lines.at", timezone: SHOP_TIMEZONE } },
                 },
-                totalRevenue: { $sum: { $multiply: ["$items.count", "$items.price"] } },
+                totalRevenue: { $sum: "$lineRevenue" },
                 totalCost: {
                     $sum: {
-                        $multiply: ["$items.count", { $ifNull: ["$product.buyPrice", 0] }],
+                        $cond: [
+                            { $gt: ["$knownBuyPrice", 0] },
+                            { $multiply: ["$lines.count", "$knownBuyPrice"] },
+                            // Unknown buy price: assume the default profit margin on this line
+                            { $multiply: ["$lineRevenue", 1 - DEFAULT_PROFIT_RATE] },
+                        ],
                     },
                 },
             },
@@ -122,4 +166,26 @@ export async function getYearlyMonthlyProfits() {
     ]);
 
     return profits;
+}
+
+/** Products in stock that were not sold during the last 60 days (and are older than that). */
+export async function getDeadStock() {
+    await connectDB();
+    const userId = await getUserId();
+
+    const since = new Date();
+    since.setDate(since.getDate() - 60);
+
+    const soldIds = (await Bill.distinct("items.productId", { userId, deletedAt: null, createdAt: { $gte: since } })) as string[];
+    const validIds = soldIds.filter((id) => Types.ObjectId.isValid(id)).map((id) => new Types.ObjectId(id));
+
+    const products = await Product.find(
+        { userId, deletedAt: null, count: { $gt: 0 }, createdAt: { $lt: since }, _id: { $nin: validIds } },
+        { name: 1, company: 1, location: 1, count: 1, buyPrice: 1 },
+    ).lean();
+
+    return products
+        .map((p) => ({ _id: p._id.toString(), name: p.name, company: p.company, location: p.location, count: p.count, value: p.count * p.buyPrice }))
+        .sort((a, b) => b.value - a.value)
+        .slice(0, 20);
 }

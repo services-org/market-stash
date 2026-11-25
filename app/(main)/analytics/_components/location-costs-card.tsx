@@ -1,6 +1,7 @@
 "use client";
 import { Building2, TrendingDown, TrendingUp } from "lucide-react";
 
+import { formatNumber } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGet } from "@/hooks/api";
 
@@ -59,13 +60,13 @@ export function LocationCostsCard() {
                                     <p className="text-xs text-muted-foreground flex items-center gap-1">
                                         <TrendingDown className="size-3 text-destructive" /> إجمالي الشراء
                                     </p>
-                                    <p className="text-lg font-mono font-semibold">{loc.totalBuyCost.toFixed(2)}</p>
+                                    <p className="text-lg font-mono font-semibold">{formatNumber(loc.totalBuyCost)}</p>
                                 </div>
                                 <div className="space-y-1">
                                     <p className="text-xs text-muted-foreground flex items-center gap-1">
                                         <TrendingUp className="size-3 text-emerald-500" /> إجمالي البيع
                                     </p>
-                                    <p className="text-lg font-mono font-semibold">{loc.totalSellCost.toFixed(2)}</p>
+                                    <p className="text-lg font-mono font-semibold">{formatNumber(loc.totalSellCost)}</p>
                                 </div>
                             </div>
 
@@ -81,7 +82,7 @@ export function LocationCostsCard() {
                                 </div>
                                 <p className={`text-xl font-mono font-bold ${profit >= 0 ? "text-emerald-500" : "text-destructive"}`}>
                                     {profit > 0 ? "+" : ""}
-                                    {profit.toFixed(2)} ج.م
+                                    {formatNumber(profit)} ج.م
                                 </p>
                             </div>
                         </div>
